@@ -154,54 +154,9 @@ app.use(
 //
 //
 // Initialize Razorpay instance
-const razorpay = new Razorpay({
-  key_id: "",
-  key_secret: "",
-});
 //
-//
-//
-// Route to create an order
-app.post("/create-order", async (req, res) => {
-  const { amount, currency } = req.body;
-
-  const options = {
-    amount: amount * 100, // Razorpay accepts amount in paisa (1 INR = 100 paisa)
-    currency: currency || "INR",
-    receipt: "receipt_order_74394", // You can generate a unique receipt for each order
-  };
-
-  try {
-    const order = await razorpay.orders.create(options);
-    res.json({
-      id: order.id, // Order ID
-      currency: order.currency,
-      amount: order.amount,
-    });
-  } catch (error) {
-    res
-      .status(500)
-      .send({ error: "Something went wrong while creating the order" });
-  }
-});
-
 // Route to verify payment
-app.post("/verify-payment", (req, res) => {
-  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
-    req.body;
-
-  const crypto = require("crypto");
-
-  const hmac = crypto.createHmac("sha256", "");
-  hmac.update(`${razorpay_order_id}|${razorpay_payment_id}`);
-  const generated_signature = hmac.digest("hex");
-
-  if (generated_signature === razorpay_signature) {
-    res.send({ status: "Payment verified successfully" });
-  } else {
-    res.status(400).send({ error: "Payment verification failed" });
-  }
-});
+//
 //
 //
 //
