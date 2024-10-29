@@ -37,7 +37,7 @@ const {
 
 // MongoDB Atlas connection string
 mongoose.connect(
-  "mongodb+srv://sharathkr0402:ydztHqhjeYVQkKL2@cluster0.5sfi9.mongodb.net/services?retryWrites=true&w=majority&appName=Cluster0"
+  "mongodb+srv://sharathkr0402:ydztHqhjeYVQkKL2@cluster0.5sfi9.mongodb.net/services?retryWrites=true&w=majority&appName=Cluster0&tls=true&tlsAllowInvalidCertificates=true"
 );
 
 const db = mongoose.connection;
