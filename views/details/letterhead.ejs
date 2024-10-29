@@ -1,0 +1,64 @@
+<style>
+  #profilediv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #profilediv h4 {
+    text-align: center;
+  }
+  #profilediv td {
+    padding: 12px;
+  }
+  #navdiv {
+    display: flex;
+    padding-right: 20px;
+    justify-content: space-evenly;
+  }
+  #mdiv {
+    padding: 20px 20px 0px 20px;
+  }
+  #mmdiv {
+    background-color: antiquewhite;
+    margin: 20px 100px;
+    border-radius: 10px;
+    padding-bottom: 20px;
+  }
+  #profilediv img {
+    width: 150px;
+    height: 200px;
+    border: 2px solid black;
+    margin-bottom: 20px;
+  }
+</style>
+<% layout('layouts/boilerplate')%>
+<div id="mmdiv">
+  <div id="mdiv">
+    <div id="navdiv">
+      <a href="/profileDetails"
+        ><button class="btn btn-primary">Profile Details</button></a
+      >
+      <a href="/bank"><button class="btn btn-primary">Bank Details</button></a>
+      <a href="/kyc"><button class="btn btn-primary">KYC Details</button></a>
+      <a href="/letterHead"
+        ><button class="btn btn-primary">Letter head</button></a
+      >
+      <a href="/certificate"
+        ><button class="btn btn-primary">Certificate</button></a
+      >
+      <a href="/businessCard"
+        ><button class="btn btn-primary">Business Card</button></a
+      >
+      <a href="/idCard"><button class="btn btn-primary">ID Card</button></a>
+      <a href="/myBizCard"><button class="btn btn-primary">Biz Card</button></a>
+    </div>
+  </div>
+  <hr />
+  <div id="profilediv">
+    <h4>Your Letter Head</h4>
+    <img src="../images/Letterhead.jpg" alt="" />
+    <form action="/letterHeadDownload" method="get">
+      <button type="submit" class="btn btn-primary">Download</button>
+    </form>
+  </div>
+</div>

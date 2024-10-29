@@ -1,0 +1,108 @@
+<style>
+  #login-div {
+    width: 40%;
+    height: 55%;
+    position: relative;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    background-color: antiquewhite;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 20px;
+    text-align: center;
+  }
+  #login-form {
+    text-align: center;
+  }
+  #login-form button {
+    font-weight: bold;
+    margin: 10px;
+  }
+  .form-label {
+    width: 200px;
+    padding-top: 5px;
+  }
+  #login-div a {
+    text-decoration: none;
+  }
+  .email-form {
+    display: flex;
+  }
+  .pass-form {
+    display: flex;
+  }
+  .role-form {
+    display: flex;
+  }
+  #login-div h3 {
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 0px 40px 0px;
+  }
+</style>
+<% layout('layouts/boilerplate')%>
+
+<div id="login-div">
+  <h3 class="bg-primary">Login</h3>
+
+  <% if(success_msg){ %>
+  <p style="color: green"><%= success_msg %></p>
+  <% } %> <% if(error_msg){ %>
+  <p style="color: red"><%= error_msg %></p>
+  <% } %> <% if(errors && errors.length > 0){ %>
+  <ul>
+    <% errors.forEach(function(error){ %>
+    <li style="color: red"><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <form action="/login" method="POST" id="login-form">
+    <div class="mb-3 role-form">
+      <label for="role" class="form-label"><b>Login as a</b></label>
+      <select id="role" name="role" required class="form-control form-select">
+        <option value="" selected>Select</option>
+        <option value="admin">Admin</option>
+        <option value="whitelabel">White Label</option>
+        <option value="masterdistributor">Master Distributor</option>
+        <option value="distributor">Distributor</option>
+        <option value="subdistributor">Sub Distributor</option>
+        <option value="retailer">Retailer</option>
+      </select>
+    </div>
+    <div class="mb-3 email-form">
+      <label for="exampleInputEmail1" class="form-label"
+        ><b>Email address</b></label
+      >
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        value="<%= typeof email !== 'undefined' ? email : '' %>"
+        required
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3 pass-form">
+      <label for="exampleInputPassword1" class="form-label"
+        ><b>Password</b></label
+      >
+      <input
+        type="password"
+        name="password"
+        value="<%= typeof password !== 'undefined' ? password : '' %>"
+        required
+        class="form-control"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Request OTP</button>
+  </form>
+  <p>
+    Don't have an account? <a href="/register"><b>Register here</b></a>
+  </p>
+</div>

@@ -1,0 +1,175 @@
+<style>
+  #cartdiv {
+    margin: 30px 200px;
+    text-align: center;
+  }
+  #couponprice {
+    display: flex;
+    padding: 40px 0px;
+    justify-content: center;
+  }
+  #coupon {
+    width: 400px;
+    height: 150px;
+    background-color: rgb(198, 225, 249);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  #coupon p {
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+  #coupon1 {
+    display: flex;
+  }
+  #coupon1 button {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  #coupon1 input {
+    margin-left: 20px;
+  }
+
+  #pricediv {
+    background-color: rgb(198, 225, 249);
+    margin-left: 80px;
+    padding: 20px 50px 20px 50px;
+    border-radius: 10px;
+    width: 300px;
+  }
+</style>
+
+<% layout('layouts/boilerplate')%> <%let discount=0; let
+subtotal=price-discount; let gst=Math.floor(subtotal*0.18); let
+total=Math.floor(subtotal+gst) %>
+
+<div id="cartdiv">
+  <h3>Shopping cart</h3>
+  <table id="carttb" class="table table-bordered border-primary">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">PRODUCT</th>
+        <th scope="col">QUANTITY</th>
+        <th scope="col">PRICE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%=name%></td>
+        <td><b>1</b></td>
+        <td><%=price%></td>
+      </tr>
+    </tbody>
+  </table>
+  <div id="couponprice">
+    <div id="coupon">
+      <p>Have coupon?</p>
+      <div id="coupon1" class="">
+        <input type="text" class="form-control" id="coupontext" />
+        <button type="button" class="btn btn-primary" id="couponbtn">
+          Apply
+        </button>
+      </div>
+    </div>
+
+    <div id="pricediv">
+      <p><b>PRICE DETAIL</b></p>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>Item Price:</td>
+            <td>&#8377;<%=price%></td>
+          </tr>
+          <tr>
+            <td>Discount:</td>
+            <td>&#8377;<%=discount%></td>
+          </tr>
+          <tr>
+            <td>Subtotal:</td>
+            <td>&#8377;<%=subtotal%></td>
+          </tr>
+          <tr>
+            <td>GST:</td>
+            <td>&#8377;<%=gst%></td>
+          </tr>
+          <tr>
+            <td>Total:</td>
+            <td>&#8377;<%=total%></td>
+          </tr>
+        </tbody>
+      </table>
+      <form action="/payment/<%=total%>" method="post">
+        <button type="submit" class="btn btn-success" id="rzp-button">
+          Confirm Payment
+        </button>
+      </form>
+      <div id="payment-message"></div>
+    </div>
+  </div>
+</div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  const rzpButton = document.getElementById("rzp-button1");
+
+  rzpButton.addEventListener("click", function () {
+    // Fetch the order details from your backend
+    fetch("/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: 500,
+        currency: "INR",
+      }),
+    })
+      .then((response) => response.json())
+      .then((order) => {
+        const options = {
+          key: "rzp_live_jM6e5oCGV6NHhx", // Use your Razorpay key ID here
+          amount: order.amount, // Amount in paisa
+          currency: order.currency,
+          name: "GST suvidhs kendra",
+          description: "Test Transaction",
+          order_id: order.id, // Order ID returned by your backend
+          handler: function (response) {
+            // Handle the payment success here
+            fetch("/verify-payment", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              }),
+            })
+              .then((verifyResponse) => verifyResponse.json())
+              .then((result) => {
+                document.getElementById("payment-message").innerText =
+                  "Payment Verified!";
+              })
+              .catch((error) => {
+                document.getElementById("payment-message").innerText =
+                  "Payment Verification Failed";
+              });
+          },
+          prefill: {
+            name: "Shreejith Raj", // You can pass customer details here
+            email: "shreejithraj8889@gmail.com",
+            contact: "9739656591",
+          },
+          theme: {
+            color: "#3399cc",
+          },
+        };
+        const rzp = new Razorpay(options);
+        rzp.open();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  });
+</script>

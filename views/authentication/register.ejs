@@ -1,0 +1,273 @@
+<style>
+  #register-div {
+    width: 50%;
+    height: 75%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 8%);
+    background-color: antiquewhite;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  #register-div a {
+    text-decoration: none;
+  }
+  #register-div .form-label {
+    width: 270px;
+    font-weight: bold;
+    padding-top: 5px;
+  }
+  #register-div .register-ele {
+    display: flex;
+    margin: 15px;
+  }
+  #register-div button {
+    margin: 10px;
+  }
+  #register-div h3 {
+    padding: 5px;
+    border-radius: 5px;
+  }
+  .role-form {
+    display: flex;
+  }
+</style>
+<% layout('layouts/boilerplate')%>
+<div id="register-div">
+  <h3 class="bg-warning">Register</h3>
+
+  <% if(errors && errors.length > 0){ %>
+  <ul>
+    <% errors.forEach(function(error){ %>
+    <li style="color: red"><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <form
+    action="/register"
+    method="POST"
+    enctype="multipart/form-data"
+    id="register-form"
+  >
+    <div class="mb-3 role-form register-ele">
+      <label for="role" class="form-label">Register as a</label>
+      <select
+        id="role"
+        name="role"
+        onchange="toggleFields(this.value)"
+        required
+        class="form-control form-select"
+      >
+        <option value="" selected>Please Select.....</option>
+        <option value="admin">Admin</option>
+        <option value="whitelabel">White Label</option>
+        <option value="masterdistributor">Master Distributor</option>
+        <option value="distributor">Distributor</option>
+        <option value="subdistributor">Sub Distributor</option>
+        <option value="retailer">Retailer</option>
+      </select>
+    </div>
+    <div id="namediv" class="register-ele">
+      <label for="name" class="form-label">Name</label>
+      <input
+        id="name"
+        class="form-control"
+        type="text"
+        name="name"
+        value="<%= typeof name !== 'undefined' ? name : '' %>"
+        required
+      />
+    </div>
+    <div id="emaildiv" class="register-ele">
+      <label for="email" class="form-label">Email</label>
+      <input
+        id="email"
+        class="form-control"
+        type="email"
+        name="email"
+        value="<%= typeof email !== 'undefined' ? email : '' %>"
+        required
+      />
+    </div>
+    <div id="mobilediv" class="register-ele">
+      <label for="mobile" class="form-label">Mobile Number</label>
+      <input
+        id="mobile"
+        class="form-control"
+        type="tel"
+        name="mobile"
+        minlength="10"
+        maxlength="10"
+        required
+      />
+    </div>
+    <div class="register-ele">
+      <label for="address" class="form-label">Address</label>
+      <input
+        id="address"
+        class="form-control"
+        type="text"
+        name="address"
+        maxlength="60"
+        required
+      />
+    </div>
+    <div class="register-ele">
+      <label for="bankName" class="form-label">Bank Name</label>
+      <input
+        id="bankName"
+        class="form-control"
+        type="text"
+        name="bankName"
+        required
+      />
+    </div>
+
+    <div class="register-ele">
+      <label for="accountNo" class="form-label">Account Number</label>
+      <input
+        id="accountNo"
+        class="form-control"
+        type="text"
+        name="accountNo"
+        required
+      />
+    </div>
+    <div class="register-ele">
+      <label for="ifscCode" class="form-label">IFSC code</label>
+      <input
+        id="ifscCode"
+        class="form-control"
+        type="text"
+        name="ifscCode"
+        minlength="11"
+        maxlength="11"
+        required
+      />
+    </div>
+    <div class="register-ele">
+      <label for="aadharNo" class="form-label">Aadhar Number</label>
+      <input
+        id="aadharNo"
+        class="form-control"
+        type="text"
+        name="aadharNo"
+        minlength="12"
+        maxlength="12"
+        required
+      />
+    </div>
+    <div class="register-ele">
+      <label for="panNo" class="form-label">Pan Number</label>
+      <input
+        id="panNo"
+        class="form-control"
+        type="text"
+        name="panNo"
+        minlength="10"
+        maxlength="10"
+        required
+      />
+    </div>
+    <div id="passworddiv" class="register-ele">
+      <label for="password" class="form-label">Password</label>
+      <input
+        id="password"
+        class="form-control"
+        type="password"
+        name="password"
+        value="<%= typeof password !== 'undefined' ? password : '' %>"
+        required
+      />
+    </div>
+    <div id="password2div" class="register-ele">
+      <label for="password2" class="form-label">Confirm Password</label>
+      <input
+        id="password2"
+        class="form-control"
+        type="password"
+        name="password2"
+        value="<%= typeof password2 !== 'undefined' ? password2 : '' %>"
+        required
+      />
+    </div>
+    <div id="imagediv" class="register-ele">
+      <label for="image" class="form-label">Upload Image</label>
+      <input
+        id="image"
+        type="file"
+        class="form-control"
+        name="image"
+        accept="image/*"
+        required
+      />
+    </div>
+    <div
+      id="masterDistributorIdField"
+      style="display: none"
+      class="register-ele"
+    >
+      <label for="masterDistributorId" class="form-label"
+        >Master Distributor Email</label
+      >
+      <input
+        type="text"
+        id="masterDistributorId"
+        name="masterDistributorId"
+        class="form-control"
+      />
+    </div>
+    <div id="distributorIdField" style="display: none" class="register-ele">
+      <label for="distributorId" class="form-label">Distributor Email</label>
+      <input
+        type="text"
+        id="distributorId"
+        name="distributorId"
+        class="form-control"
+      />
+    </div>
+    <div id="subDistributorIdField" style="display: none" class="register-ele">
+      <label for="subDistributorId" class="form-label"
+        >Sub Distributor Email</label
+      >
+      <input
+        type="text"
+        id="subDistributorId"
+        name="subDistributorId"
+        class="form-control"
+      />
+    </div>
+    <button type="submit" class="btn btn-warning"><b>Register</b></button>
+  </form>
+
+  <p>
+    Already have an account? <a href="/login"><b>Login here</b></a>
+  </p>
+</div>
+<script>
+  function toggleFields(role) {
+    document.getElementById("masterDistributorIdField").style.display = "none";
+    document.getElementById("distributorIdField").style.display = "none";
+    document.getElementById("subDistributorIdField").style.display = "none";
+
+    if (role === "retailer") {
+      document.getElementById("masterDistributorIdField").style.display =
+        "flex";
+      document.getElementById("distributorIdField").style.display = "flex";
+      document.getElementById("subDistributorIdField").style.display = "flex";
+    } else if (role === "subdistributor") {
+      document.getElementById("masterDistributorIdField").style.display =
+        "flex";
+      document.getElementById("distributorIdField").style.display = "flex";
+    } else if (role === "distributor") {
+      document.getElementById("masterDistributorIdField").style.display =
+        "flex";
+    }
+  }
+</script>

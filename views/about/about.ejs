@@ -1,0 +1,615 @@
+<style>
+  h1 {
+    text-align: center;
+    color: #08377c;
+  }
+  .term {
+    margin: 40px;
+    padding: 40px;
+    background-color: rgb(2, 145, 203, 0.3);
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3); /* Horizontal offset, vertical offset, blur radius, shadow color */
+  }
+  .term > div {
+    margin-bottom: 50px;
+  }
+  .mission {
+    display: flex;
+    margin: 20px;
+    background-color: #08377c;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .mission1 {
+    padding: 4%;
+    text-align: justify;
+  }
+  .mission2 {
+    padding: 4%;
+    text-align: justify;
+  }
+  #values {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  #goals {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  #services {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  #values img {
+    width: 100%;
+    object-fit: cover;
+  }
+  #goals img {
+    width: 100%;
+    object-fit: cover;
+  }
+  #services img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .serviceclass {
+    display: flex;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    background-color: #08377c;
+  }
+  .infoclass {
+    background-color: #08377c;
+    color: white;
+    width: 30%;
+    padding: 10px;
+    margin: auto;
+  }
+  .infoclass p {
+    font-size: large;
+  }
+  .imgclass {
+    overflow: hidden;
+  }
+  .imgclass img {
+    width: 100%;
+    object-fit: cover;
+  }
+  #aitools {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  #aitools img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .splservice1 {
+    background-color: #08377c;
+    color: white;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  .splservice2 {
+    color: black;
+  }
+  .splservice2 p {
+    text-align: justify;
+  }
+  .splservice2 h4 {
+    text-align: center;
+  }
+  .splservice2 .splservice3 {
+    display: flex;
+    justify-content: space-around;
+  }
+  .splservice2 .splservice3 > div {
+    padding: 10px;
+    margin: 30px;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .splservice3 img {
+    display: block;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #milestone {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  #milestone img {
+    width: 100%;
+    object-fit: cover;
+  }
+  #ourassociation {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  #ourassociation img {
+    width: 100%;
+    object-fit: cover;
+  }
+  #ournetwork {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+  }
+  #ournetwork img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mediaimg {
+    display: flex;
+    justify-content: space-between;
+  }
+  .mediaimages {
+    width: 48%; /* Set the desired width for the div */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+  }
+  .mediaimages img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+<% layout('layouts/boilerplate')%>
+<div class="term">
+  <h1>SERVEWISE INDIA PVT LTD</h1>
+  <div class="mission">
+    <div class="mission1">
+      <h1 class="text-light">About Company</h1>
+      <p>
+        Bharathiya Grameena Banking is the innovative solution emerging from
+        Servewise India Pvt Ltd, designed to revolutionize banking and essential
+        services access in rural, semi-urban, and urban areas across India. With
+        a comprehensive suite of offerings ranging from banking services to
+        e-commerce solutions, government services, and beyond, Bharathiya
+        Grameena Banking aims to bridge the gap between urban conveniences and
+        rural accessibility.
+      </p>
+    </div>
+    <div class="mission2">
+      <h1 class="text-light">Our Mission</h1>
+      <p>
+        Empowering Rural Communities Through Financial Inclusion, eradicating
+        banking, financial, and digital service issues in rural areas by
+        empowering rural communities, particularly women, and providing
+        employment opportunities. we aim to provide women with the tools,
+        resources, and opportunities they need to become leaders in their
+        communities, whether it's through entrepreneurship, education, or
+        advocacy. As members of the Servewise team, each of us plays a vital
+        role in realizing this mission.
+      </p>
+    </div>
+  </div>
+  <div id="services">
+    <img src="../images/services.jpg" alt="" />
+  </div>
+  <div id="values">
+    <img src="../images/values.jpg" alt="" />
+  </div>
+  <div id="goals">
+    <img src="../images/goals.jpg" alt="" />
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <p>
+        We have wide range of services which are very useful in our day to day
+        life, from Banking, insurance, bill payments, AEPS, BBPS, DMT, Aadhar
+        pay, reharge, PAN card, investment, verification and kyc,l oans, credit
+        ards, subscriptions, affiliate marketing, travel and hotel and many more
+      </p>
+    </div>
+    <div class="imgclass">
+      <img src="../images/allservices.jpg" alt="" />
+    </div>
+  </div>
+
+  <div class="serviceclass">
+    <div class="infoclass">
+      <ul>
+        <li>AEPS AadharPay and mATM</li>
+        <li>Balance inquiry</li>
+        <li>Mini Statement</li>
+      </ul>
+      <h4>Saving account open:SBI</h4>
+      <ul>
+        <li>SBI yono saving account</li>
+        <li>Federal bank saving account</li>
+        <li>Equitas Bank Saving Account</li>
+        <li>Kotak 811 Savings Account</li>
+        <li>DBS and Axis Savings Account</li>
+        <li>Jupiter Digital Account</li>
+        <li>AU Bank Saving Account</li>
+        <li>FI MONEY Digital Account</li>
+        <li>Yes Bank Saving Account</li>
+        <li>Niyo Digital Saving Account</li>
+        <li>Indusind Bank Saving Account</li>
+      </ul>
+      <h4>Credit cards:</h4>
+      <ul>
+        <li>HSBC credit card</li>
+        <li>SBI credit card</li>
+        <li>ICICI Credit Card</li>
+        <li>Citi Bank Credit Card</li>
+        <li>Indusind and AXIS Credit card</li>
+        <li>AU Bank and HDFC Credit Card</li>
+        <li>IDFC and many other cards</li>
+      </ul>
+    </div>
+    <div class="imgclass">
+      <img src="../images/banking.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>
+        Domestic money transfer: Transfer fund to any bank account around the
+        country through IMPS, NEFT,RTGS and UPI
+      </h4>
+    </div>
+    <div class="imgclass">
+      <img src="../images/payout.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>
+        LOANS: We provide all types of loans such as personal, business, home,
+        education, vehicle etc. from more than 120+ banks across India with ROI
+        as minimum as possible, and best in the market commission slabs,
+        completely digital process using AI tools
+      </h4>
+    </div>
+    <div class="imgclass">
+      <img src="../images/lending.jpg" alt="" />
+    </div>
+  </div>
+
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>
+        We provide all types of insurance such as Health Insurance ,Covid
+        Insurance, Life Insurance, Car Insurance, Bike Insurance, Commercial
+        Vehicle, Home Insurance, Travel Insurance, Cyber Insurance, Hospital
+        Cash, Fire Insurance, Personal Accident Insurance etc. from all
+        companies with best in the market commission
+      </h4>
+    </div>
+    <div class="imgclass">
+      <img src="../images/insurance.jpg" alt="" />
+    </div>
+  </div>
+
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>Bharath bill payment services:</h4>
+      <ul>
+        <li>LIC</li>
+        <li>Electricity</li>
+        <li>Gas-Pipe Line</li>
+        <li>Water</li>
+        <li>Municipal Taxes & Services</li>
+        <li>Mobile / Landline</li>
+        <li>Broadband / Data card</li>
+        <li>Fastag Recharge</li>
+        <li>Loan Repayments</li>
+        <li>Recurring Deposits</li>
+        <li>Credit Card</li>
+        <li>Mutual Fund</li>
+        <li>Insurance</li>
+      </ul>
+    </div>
+    <div class="imgclass">
+      <img src="../images/bill.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>Bharath bill payment services:</h4>
+      <ul>
+        <li>LPG Gas</li>
+        <li>T.V</li>
+        <li>Cable Cable</li>
+        <li>DTH DTH</li>
+        <li>Housing Society</li>
+        <li>Educational Fees</li>
+        <li>Hospital & Pathology</li>
+        <li>Clubs & Associations</li>
+        <li>Rental</li>
+        <li>Metro Recharge</li>
+        <li>Subscription Fees - Digital/OTT</li>
+        <li>and other billers of nature</li>
+      </ul>
+    </div>
+    <div class="imgclass">
+      <img src="../images/bill2.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>
+        We provide all types of bookings suh as flight, bus, hotel,train,taxy
+        etc
+      </h4>
+      <ul>
+        <li>MakeMyTrip [Hotel]</li>
+        <li>MakeMyTrip [Flight]</li>
+        <li>Cleartrip [Flight]</li>
+        <li>VIA .com [Flight]</li>
+        <li>Akbar Travels [Hotel]</li>
+        <li>Oyo Hotel</li>
+        <li>goibibo hotels</li>
+      </ul>
+    </div>
+    <div class="imgclass">
+      <img src="../images/travel.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>
+        We provide all types of recharges such as mobile recharges, DTH
+        recharges, metro card recharges, Fastag recharges etc.
+      </h4>
+    </div>
+    <div class="imgclass">
+      <img src="../images/recharge.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>We provide UTI and NSDL PAN card</h4>
+    </div>
+    <div class="imgclass">
+      <img src="../images/pan.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>
+        All types of savings and investments can be done such as Mutual funds,
+        insurances, fixed deposits, reccuring deposits and SIP etc.
+      </h4>
+    </div>
+    <div class="imgclass">
+      <img src="../images/investment.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>All types of verifications, kyc can be done</h4>
+    </div>
+    <div class="imgclass">
+      <img src="../images/kyc.jpg" alt="" />
+    </div>
+  </div>
+  <div class="serviceclass">
+    <div class="infoclass">
+      <h4>Affiliate services:</h4>
+      <ul>
+        <li>Amazon and Flipkart</li>
+        <li>Myntra and shopsy</li>
+        <li>Mc Donalds online food</li>
+        <li>Swiggy</li>
+        <li>DominosSlurrpfarm food order</li>
+        <li>shopclues</li>
+        <li>lenskart</li>
+        <li>kids only</li>
+        <li>snapdeal</li>
+        <li>ajio</li>
+        <li>acne squad</li>
+        <li>Libas online shopping</li>
+        <li>Fossil</li>
+        <li>Marks and spencer</li>
+        <li>John Jocobs</li>
+        <li>Titan</li>
+        <li>Adidas</li>
+        <li>Blackberry</li>
+        <li>Muscleblaze online shopping</li>
+        <li>My upchar online medicine</li>
+        <li>Organic india online medicine</li>
+        <li>TAC ayurveda</li>
+        <li>TATA 1mg online medicine</li>
+        <li>Netmeds and many more.</li>
+      </ul>
+    </div>
+    <div class="imgclass">
+      <img src="../images/b2b.jpg" alt="" />
+    </div>
+  </div>
+  <div id="aitools">
+    <img src="../images/aitools.jpg" alt="" />
+  </div>
+  <div class="splservice1">
+    <h1 style="text-align: center; margin: 20px; color: white">
+      Specialised Services
+    </h1>
+    <div class="splservice2">
+      <div class="splservice3">
+        <div class="col-3"><h4>Growth Capital</h4></div>
+        <div class="col-3"><h4>MSME Business financing</h4></div>
+        <div class="col-3"><h4>Corporate finance</h4></div>
+      </div>
+      <div class="splservice3">
+        <div class="col-3"><h4>Project finance</h4></div>
+        <div class="col-3"><h4>Working capital finance</h4></div>
+        <div class="col-3"><h4>Private finance</h4></div>
+      </div>
+      <div class="splservice3">
+        <div class="col-3">
+          <h4>Home Loan</h4>
+          <p>
+            Secure your dream home with our home loan solutions. Enjoy
+            competitive rates, flexible terms, and a straightforward application
+            process. Let us be your partner in making homeownership a joyful
+            reality.
+          </p>
+        </div>
+        <div class="col-3">
+          <h4>Vehicle Loan</h4>
+          <p>
+            Hit the road in style with our vehicle loan options. Whether it's a
+            car or a bike, our financing solutions offer competitive rates and
+            easy repayment plans. Experience the thrill of ownership with our
+            seamless loan process.
+          </p>
+        </div>
+        <div class="col-3">
+          <h4>Personal Loan</h4>
+          <p>
+            Achieve your aspirations with us. Whether it's a vacation or home
+            Improvement, our loans feature quick approval, minimal
+            documentation, and competitive interest rates. Fulfill your dreams
+            without compromising your financial stability.
+          </p>
+        </div>
+      </div>
+      <div class="splservice3">
+        <div class="col-3">
+          <h4>Education Loan</h4>
+          <p>
+            Invest in your education without financial worries. Our education
+            loan services offer low-Interest rates, flexible repayment, and
+            prompt fund disbursal. Trust us to support your academic journey and
+            secure your future.
+          </p>
+        </div>
+        <div class="col-3">
+          <h4>Business Loan</h4>
+          <p>
+            Tailored for startups and established enterprises alike, our loans
+            offer competitive interest rates, flexible repayment options. Fuel
+            your business growth, seize opportunities, and navigate the path to
+            success with our comprehensive financial support.
+          </p>
+        </div>
+        <div class="col-3">
+          <h4>MSME Loan</h4>
+          <p>
+            When urgency strikes, our instant personal loans deliver prompt
+            solutions. Benefit from a streamlined application process, quick
+            approvals, and instant fund disbursal.For urgent financial needs,
+            our instant personal loans are the answer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="splservice1">
+    <div class="splservice2">
+      <div class="splservice3">
+        <div class="col-3">
+          <img src="../images/logo.jpeg" alt="" />
+          <h4>Earn up to a lakh per month</h4>
+          <p>
+            You can make extra income every month up to a lakh by selling
+            financial products.
+          </p>
+        </div>
+        <div class="col-3">
+          <img src="../images/logo.jpeg" alt="" />
+          <h4>Remote Work</h4>
+          <p>
+            You can work from the comfort of your home, at a time that is
+            convenient for you We're flexible.
+          </p>
+        </div>
+        <div class="col-3">
+          <img src="../images/logo.jpeg" alt="" />
+          <h4>Zero Investment</h4>
+          <p>
+            Discover clients and launch your own company for nothing, just as
+            you've always wanted to.
+          </p>
+        </div>
+      </div>
+      <div class="splservice3">
+        <div class="col-3">
+          <img src="../images/logo.jpeg" alt="" />
+          <h4>Instant Pay</h4>
+          <p>
+            You don't have to wait for weeks to receive your money. We credit
+            your payment as soon as the sale is a success.
+          </p>
+        </div>
+        <div class="col-3">
+          <img src="../images/logo.jpeg" alt="" />
+          <h4>Become an Expert</h4>
+          <p>
+            Enrol in online classes and receive training from our professionals
+            to learn how to sell more effectively.
+          </p>
+        </div>
+        <div class="col-3">
+          <img src="../images/logo.jpeg" alt="" />
+          <h4>Lifelong Income</h4>
+          <p>
+            There is no age limit to working as an advisor, meaning, you don't
+            have to retire at any point of life. You can make money for as long
+            as you want to.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="milestone">
+    <img src="../images/milestone.png" alt="" />
+  </div>
+  <div id="ourassociation">
+    <img src="../images/ourassociation.jpg" alt="" />
+  </div>
+  <div id="ournetwork">
+    <img src="../images/ournetwork.jpg" alt="" />
+  </div>
+  <div class="mediaimg">
+    <div class="mediaimages">
+      <img src="../images/media1.jpg" alt="" />
+    </div>
+    <div class="mediaimages">
+      <img src="../images/media2.jpg" alt="" />
+    </div>
+  </div>
+</div>

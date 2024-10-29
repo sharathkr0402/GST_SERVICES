@@ -1,0 +1,206 @@
+<style>
+  .dropdown-item:hover {
+    background-color: rgb(2, 145, 203);
+    color: white;
+  }
+  #wallet {
+    margin-right: auto;
+  }
+  .dropdown-item {
+    font-weight: bold;
+  }
+  .navbar {
+    background-color: rgb(2, 145, 203);
+  }
+  .navbar a {
+    text-decoration: none;
+  }
+  .navbar a:hover {
+    color: white;
+  }
+  .nav-item > a {
+    color: white;
+  }
+  @media screen and (min-width: 576px) {
+    .dropdown:hover > .dropdown-menu,
+    .dropend:hover > .dropdown-menu {
+      display: block;
+      margin-top: 0;
+    }
+    .dropend:hover > .dropdown-menu {
+      position: absolute;
+      left: 197px;
+      top: -10px;
+    }
+    #wallet {
+      margin-left: 20px;
+    }
+  }
+</style>
+<nav class="navbar navbar-expand-lg bg-body-primary p-3">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler bg-light"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="fw-bold p-3" href="/dashboard<%=role%>">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="dropdown-toggle fw-bold p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            GST & Tax Services
+          </a>
+          <ul class="dropdown-menu bg-light">
+            <li><a class="dropdown-item" href="/accounting">Accounting</a></li>
+            <li><a class="dropdown-item" href="/audit">Audit</a></li>
+            <li>
+              <a class="dropdown-item" href="/coformation">Co.Formation</a>
+            </li>
+            <li><a class="dropdown-item" href="/dsc">DSC</a></li>
+            <li><a class="dropdown-item" href="/eway">E-Way</a></li>
+            <li><a class="dropdown-item" href="/fssai">FSSAI</a></li>
+            <li><a class="dropdown-item" href="/gst">GST</a></li>
+            <li><a class="dropdown-item" href="/iec">IEC</a></li>
+            <li><a class="dropdown-item" href="/itr">ITR</a></li>
+            <li><a class="dropdown-item" href="/microatm">Micro ATM</a></li>
+            <li><a class="dropdown-item" href="/msme">MSME</a></li>
+            <li><a class="dropdown-item" href="/other">Other</a></li>
+            <li><a class="dropdown-item" href="/tax">Tax</a></li>
+            <li><a class="dropdown-item" href="/tds">TDS</a></li>
+            <li><a class="dropdown-item" href="/trademark">Trademark</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="dropdown-toggle fw-bold p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Utility Services
+          </a>
+          <ul class="dropdown-menu bg-light">
+            <li class="dropend">
+              <a
+                class="dropdown-item dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+              >
+                Bookings
+              </a>
+              <ul class="dropdown-menu bg-light">
+                <li>
+                  <a class="dropdown-item" href="#">Bus Bookings List</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Flight Bookings Details</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Hotel Bookings List</a>
+                </li>
+              </ul>
+            </li>
+            <li><a class="dropdown-item" href="#">Utility Transactions</a></li>
+            <li><a class="dropdown-item" href="#">PayNuke Transactions</a></li>
+            <li><a class="dropdown-item" href="#">Your Earning</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="dropdown-toggle fw-bold p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Insurance
+          </a>
+          <ul class="dropdown-menu bg-light">
+            <li><a class="dropdown-item" href="#">New Insurance</a></li>
+            <li>
+              <a class="dropdown-item" href="#">Insurance Transactions</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"
+                >Insurance Transactions New Portal</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="dropdown-toggle fw-bold p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Instant Loan
+          </a>
+          <ul class="dropdown-menu bg-light">
+            <li><a class="dropdown-item" href="#">Salaried Loan</a></li>
+            <li><a class="dropdown-item" href="#">Business Loan</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="fw-bold p-3" href="#">Micro ATM</a>
+        </li>
+        <li class="nav-item">
+          <a class="fw-bold p-3" href="/webservices">Web Services</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="dropdown-toggle fw-bold p-3"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            G2C Services
+          </a>
+          <ul class="dropdown-menu bg-light">
+            <li><a class="dropdown-item" href="#">National Services</a></li>
+            <li><a class="dropdown-item" href="#">State Wise Services</a></li>
+            <li><a class="dropdown-item" href="#">E-shram</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="fw-bold p-3" href="/marketing">Marketing</a>
+        </li>
+        <li class="nav-item">
+          <a class="fw-bold p-3" href="/grievance">Grievance</a>
+        </li>
+        <div>
+          <li class="nav-item" id="wallet">
+            <a href="/profileDetails"
+              ><i class="fa-solid fa-wallet"></i><b> Wallet </b>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
