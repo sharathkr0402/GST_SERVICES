@@ -35,14 +35,17 @@ const {
   webServices,
 } = require("./services");
 
-mongoose.connect("mongodb://localhost:27017/services");
+// MongoDB Atlas connection string
+mongoose.connect(
+  "mongodb+srv://sharathkr0402:ydztHqhjeYVQkKL2@cluster0.5sfi9.mongodb.net/services?retryWrites=true&w=majority&appName=Cluster0"
+);
 
 const db = mongoose.connection;
-
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("Database connected");
 });
+
 const seedDB = async () => {
   await Accounting.deleteMany({});
   await Audit.deleteMany({});
@@ -61,21 +64,21 @@ const seedDB = async () => {
   await Trademark.deleteMany({});
   await Webservices.deleteMany({});
 
-  Accounting.insertMany(accounting);
-  Audit.insertMany(audit);
-  Coformation.insertMany(coFormation);
-  Dsc.insertMany(dsc);
-  Eway.insertMany(eWay);
-  Fssai.insertMany(fssai);
-  Gst.insertMany(gst);
-  Iec.insertMany(iec);
-  Itr.insertMany(itr);
-  Msme.insertMany(msme);
-  Other.insertMany(other);
-  Printingkit.insertMany(printingKit);
-  Tax.insertMany(tax);
-  Tds.insertMany(tds);
-  Trademark.insertMany(trademark);
-  Webservices.insertMany(webServices);
+  await Accounting.insertMany(accounting);
+  await Audit.insertMany(audit);
+  await Coformation.insertMany(coFormation);
+  await Dsc.insertMany(dsc);
+  await Eway.insertMany(eWay);
+  await Fssai.insertMany(fssai);
+  await Gst.insertMany(gst);
+  await Iec.insertMany(iec);
+  await Itr.insertMany(itr);
+  await Msme.insertMany(msme);
+  await Other.insertMany(other);
+  await Printingkit.insertMany(printingKit);
+  await Tax.insertMany(tax);
+  await Tds.insertMany(tds);
+  await Trademark.insertMany(trademark);
+  await Webservices.insertMany(webServices);
 };
 seedDB();

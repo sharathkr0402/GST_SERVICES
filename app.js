@@ -129,16 +129,18 @@ function isRetailer(req, res, next) {
 //
 //
 //
-mongoose.connect("mongodb://localhost:27017/services");
+
+// Replace with your MongoDB Atlas connection string
+mongoose.connect(
+  "mongodb+srv://sharathkr0402:ydztHqhjeYVQkKL2@cluster0.5sfi9.mongodb.net/services?retryWrites=true&w=majority&appName=Cluster0"
+);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("Database connected");
 });
-//
-//
-//
+
 // Session setup with MongoDB store
 app.use(
   session({
@@ -146,10 +148,12 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017/services",
+      mongoUrl:
+        "mongodb+srv://sharathkr0402:ydztHqhjeYVQkKL2@cluster0.5sfi9.mongodb.net/services?retryWrites=true&w=majority&appName=Cluster0",
     }),
   })
 );
+
 //
 //
 //
