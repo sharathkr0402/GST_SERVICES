@@ -155,8 +155,8 @@ app.use(
 //
 // Initialize Razorpay instance
 const razorpay = new Razorpay({
-  key_id: "rzp_live_jM6e5oCGV6NHhx",
-  key_secret: "fupAPEiScSKH7vaD43lNAvrU",
+  key_id: "",
+  key_secret: "",
 });
 //
 //
@@ -192,7 +192,7 @@ app.post("/verify-payment", (req, res) => {
 
   const crypto = require("crypto");
 
-  const hmac = crypto.createHmac("sha256", "fupAPEiScSKH7vaD43lNAvrU");
+  const hmac = crypto.createHmac("sha256", "");
   hmac.update(`${razorpay_order_id}|${razorpay_payment_id}`);
   const generated_signature = hmac.digest("hex");
 

@@ -127,7 +127,7 @@ total=Math.floor(subtotal+gst) %>
       .then((response) => response.json())
       .then((order) => {
         const options = {
-          key: "rzp_live_jM6e5oCGV6NHhx", // Use your Razorpay key ID here
+          key: "", // Use your Razorpay key ID here
           amount: order.amount, // Amount in paisa
           currency: order.currency,
           name: "GST suvidhs kendra",
@@ -157,9 +157,9 @@ total=Math.floor(subtotal+gst) %>
               });
           },
           prefill: {
-            name: "Shreejith Raj", // You can pass customer details here
-            email: "shreejithraj8889@gmail.com",
-            contact: "9739656591",
+            name: "", // You can pass customer details here
+            email: "",
+            contact: "",
           },
           theme: {
             color: "#3399cc",
