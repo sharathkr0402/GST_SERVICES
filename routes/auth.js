@@ -435,7 +435,7 @@ router.post("/login", async (req, res) => {
       if (error) {
         console.log("Nodemailer Error:", error);
         req.flash("error_msg", "Error sending OTP. Please try again.");
-        return res.redirect("/otp");
+        return res.redirect("/login");
       } else {
         console.log("Email sent: " + info.response);
         // Store user ID in session for OTP verification
@@ -446,7 +446,7 @@ router.post("/login", async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.redirect("/otp");
+    res.redirect("/login");
   }
 });
 // OTP Verification Route - GET

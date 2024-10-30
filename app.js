@@ -1050,7 +1050,7 @@ app.get(
 //
 //
 //
-app.get("/dashboard", async (req, res) => {
+app.get("/", async (req, res) => {
   const images = await Image.find();
   res.render("../views/dashboard/nologin", { images });
 });
