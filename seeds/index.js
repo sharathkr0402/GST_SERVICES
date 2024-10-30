@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const mongoose = require("mongoose");
 const Accounting = require("../models/accounting");
 const Audit = require("../models/audit");
@@ -36,9 +40,8 @@ const {
 } = require("./services");
 
 // MongoDB Atlas connection string
-mongoose.connect(
-  "mongodb+srv://sharathkr0402:ydztHqhjeYVQkKL2@cluster0.5sfi9.mongodb.net/services?retryWrites=true&w=majority&appName=Cluster0&tls=true&tlsAllowInvalidCertificates=true"
-);
+const dbUrl = process.env.DB_URL;
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));

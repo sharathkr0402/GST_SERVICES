@@ -23,31 +23,27 @@ const Whitelabel = require("../models/Whitelabel");
 //
 //
 //
-// Configure Multer for image uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/images/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // e.g., 1616161616.jpg
+// Configure Multer for image uploads and Store using cloudinary
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "gst-services", // Folder name in Cloudinary
+    allowed_formats: ["jpg", "jpeg", "png"],
   },
 });
 
 const upload = multer({
   storage: storage,
   limits: { fileSize: 1024 * 1024 * 5 }, // 5 MB limit
-  fileFilter: function (req, file, cb) {
-    const filetypes = /jpeg|jpg|png/;
-    const extname = filetypes.test(
-      path.extname(file.originalname).toLowerCase()
-    );
-    const mimetype = filetypes.test(file.mimetype);
-    if (mimetype && extname) {
-      return cb(null, true);
-    } else {
-      cb("Error: Images Only!");
-    }
-  },
 });
 
 // Configure Nodemailer
@@ -125,7 +121,6 @@ router.get("/register", (req, res) => {
   res.render("../views/authentication/register", { errors: [] });
 });
 
-// Registration Route - POST
 router.post("/register", upload.single("image"), async (req, res) => {
   const {
     name,
@@ -147,14 +142,10 @@ router.post("/register", upload.single("image"), async (req, res) => {
   let errors = [];
 
   const idNo = "BGB" + mobile;
-  // Set regDate as current date
   const date = new Date();
-
-  // Set expireDate to 3 years from the current date
   const expire = new Date();
   expire.setFullYear(date.getFullYear() + 1);
 
-  // Basic validation
   if (
     !name ||
     !email ||
@@ -205,7 +196,6 @@ router.post("/register", upload.single("image"), async (req, res) => {
     });
   } else {
     let user;
-    // Check if user exists
     switch (role) {
       case "admin":
         user = await Admin.findOne({ email: email });
@@ -249,126 +239,53 @@ router.post("/register", upload.single("image"), async (req, res) => {
     } else {
       try {
         let newUser;
+        const userData = {
+          name,
+          email,
+          address,
+          idNo,
+          mobile,
+          password,
+          role,
+          image: req.file.path, // Cloudinary URL
+          bankName,
+          accountNo,
+          ifscCode,
+          aadharNo,
+          panNo,
+          date,
+          expire,
+        };
 
         switch (role) {
           case "admin":
-            newUser = new Admin({
-              name,
-              email,
-              address,
-              idNo,
-              mobile,
-              password,
-              role,
-              image: req.file.filename,
-              bankName,
-              accountNo,
-              ifscCode,
-              aadharNo,
-              panNo,
-              date,
-              expire,
-            });
+            newUser = new Admin(userData);
             break;
           case "whitelabel":
-            newUser = new WhiteLabel({
-              name,
-              email,
-              address,
-              idNo,
-              mobile,
-              password,
-              role,
-              image: req.file.filename,
-              bankName,
-              accountNo,
-              ifscCode,
-              aadharNo,
-              panNo,
-              date,
-              expire,
-            });
+            newUser = new WhiteLabel(userData);
             break;
           case "masterdistributor":
-            newUser = new MasterDistributor({
-              name,
-              email,
-              address,
-              idNo,
-              mobile,
-              password,
-              role,
-              image: req.file.filename,
-              bankName,
-              accountNo,
-              ifscCode,
-              aadharNo,
-              panNo,
-              date,
-              expire,
-            });
+            newUser = new MasterDistributor(userData);
             break;
           case "distributor":
             newUser = new Distributor({
-              name,
-              email,
-              address,
-              idNo,
-              mobile,
-              password,
-              role,
-              image: req.file.filename,
+              ...userData,
               masterDistributorId,
-              bankName,
-              accountNo,
-              ifscCode,
-              aadharNo,
-              panNo,
-              date,
-              expire,
             });
             break;
           case "subdistributor":
             newUser = new SubDistributor({
-              name,
-              email,
-              address,
-              idNo,
-              mobile,
-              password,
-              role,
-              image: req.file.filename,
+              ...userData,
               masterDistributorId,
               distributorId,
-              bankName,
-              accountNo,
-              ifscCode,
-              aadharNo,
-              panNo,
-              date,
-              expire,
             });
             break;
           case "retailer":
             newUser = new Retailer({
-              name,
-              email,
-              address,
-              idNo,
-              mobile,
-              password,
-              role,
-              image: req.file.filename,
+              ...userData,
               masterDistributorId,
               distributorId,
               subDistributorId,
-              bankName,
-              accountNo,
-              ifscCode,
-              aadharNo,
-              panNo,
-              date,
-              expire,
             });
             break;
           default:

@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -131,9 +135,8 @@ function isRetailer(req, res, next) {
 //
 
 // Replace with your MongoDB Atlas connection string
-mongoose.connect(
-  "mongodb+srv://sharathkr0402:ydztHqhjeYVQkKL2@cluster0.5sfi9.mongodb.net/services?retryWrites=true&w=majority&appName=Cluster0&tls=true&tlsAllowInvalidCertificates=true"
-);
+const dbUrl = process.env.DB_URL;
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -148,8 +151,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl:
-        "mongodb+srv://sharathkr0402:ydztHqhjeYVQkKL2@cluster0.5sfi9.mongodb.net/services?retryWrites=true&w=majority&appName=Cluster0&tls=true&tlsAllowInvalidCertificates=true",
+      mongoUrl: dbUrl,
     }),
   })
 );
@@ -908,25 +910,52 @@ app.post("/delete/:id/:redirect", ensureAuthenticated, async (req, res) => {
 //
 //
 //Add images to Carousel
-const multer = require("multer");
-app.use("/uploads", express.static("uploads"));
-// Image storage configuration
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname));
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "gst-services", // Folder name in Cloudinary
+    allowed_formats: ["jpg", "jpeg", "png"],
   },
 });
-const upload = multer({ storage });
 
-// Define the image schema and model
+const upload = multer({ storage });
+//
+//
+//
+//
 const imageSchema = new mongoose.Schema({
-  filename: String,
+  url: String,
 });
 const Image = mongoose.model("Image", imageSchema);
 
+app.post("/upload", upload.single("image"), async (req, res) => {
+  const newImage = new Image({ url: req.file.path }); // Cloudinary provides 'path' as URL
+  await newImage.save();
+  res.redirect("/dashboardadmin");
+});
+
+app.post("/delete/:id", async (req, res) => {
+  const image = await Image.findById(req.params.id);
+  if (image) {
+    const publicId = image.url.split("/").pop().split(".")[0];
+    await cloudinary.uploader.destroy(publicId);
+    await image.remove();
+  }
+  res.redirect("/dashboardadmin");
+});
+//
+//
+//
+//
 // Admin-specific route
 app.get("/dashboardadmin", ensureAuthenticated, isAdmin, async (req, res) => {
   const images = await Image.find();
@@ -1008,18 +1037,6 @@ app.get(
 app.get("/dashboard", ensureAuthenticated, async (req, res) => {});
 //
 //
-//
-//
-app.post("/upload", upload.single("image"), async (req, res) => {
-  const newImage = new Image({ filename: req.file.filename });
-  await newImage.save();
-  res.redirect("/dashboardadmin");
-});
-
-app.post("/delete/:id", async (req, res) => {
-  await Image.findByIdAndDelete(req.params.id);
-  res.redirect("/dashboardadmin");
-});
 //
 //
 //
