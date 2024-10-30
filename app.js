@@ -785,19 +785,19 @@ app.get("/idCardDownload", async (req, res) => {
 //
 //
 //About Contact and Term and Conditions
-app.get("/about", ensureAuthenticated, (req, res) => {
+app.get("/about", (req, res) => {
   res.render("../views/about/about");
 });
-app.get("/contact", ensureAuthenticated, (req, res) => {
+app.get("/contact", (req, res) => {
   res.render("../views/about/contact");
 });
-app.get("/privacy", ensureAuthenticated, (req, res) => {
+app.get("/privacy", (req, res) => {
   res.render("../views/about/privacy");
 });
-app.get("/refund", ensureAuthenticated, (req, res) => {
+app.get("/refund", (req, res) => {
   res.render("../views/about/refund");
 });
-app.get("/terms", ensureAuthenticated, (req, res) => {
+app.get("/terms", (req, res) => {
   res.render("../views/about/terms");
 });
 //
@@ -1034,7 +1034,10 @@ app.get(
 //
 //
 //
-app.get("/dashboard", ensureAuthenticated, async (req, res) => {});
+app.get("/dashboard", async (req, res) => {
+  const images = await Image.find();
+  res.render("../views/dashboard/nologin", { images });
+});
 //
 //
 //
