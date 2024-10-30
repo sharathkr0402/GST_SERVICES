@@ -952,14 +952,30 @@ app.post("/upload", upload.single("image"), async (req, res) => {
 });
 
 app.post("/delete/:id", async (req, res) => {
-  const image = await Image.findById(req.params.id);
-  if (image) {
+  try {
+    const image = await Image.findById(req.params.id);
+
+    if (!image || !image.url) {
+      console.log("Image not found or URL is missing.");
+      req.flash("error_msg", "Image not found.");
+      return res.redirect("/dashboardadmin");
+    }
+
     const publicId = image.url.split("/").pop().split(".")[0];
     await cloudinary.uploader.destroy(publicId);
-    await image.remove();
+
+    // Use `deleteOne` to remove the document from the database
+    await Image.deleteOne({ _id: req.params.id });
+
+    req.flash("success_msg", "Image deleted successfully.");
+  } catch (error) {
+    console.error("Error deleting image:", error);
+    req.flash("error_msg", "Error deleting image. Please try again.");
   }
+
   res.redirect("/dashboardadmin");
 });
+
 //
 //
 //

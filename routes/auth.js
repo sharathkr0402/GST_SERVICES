@@ -21,14 +21,6 @@ const Distributor = require("../models/Distributor");
 const SubDistributor = require("../models/Subdistributor");
 const Retailer = require("../models/Retailer");
 const Whitelabel = require("../models/Whitelabel");
-router.use(
-  session({
-    secret: "this is my secret",
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({ mongoUrl: process.env.DB_URL }),
-  })
-);
 //
 //
 //
@@ -338,38 +330,84 @@ router.post("/login", async (req, res) => {
     switch (role) {
       case "admin":
         user = await Admin.findOne({ email });
+        if (!user) {
+          errors.push({ msg: "That email is not registered" });
+          return res.render("../views/authentication/login", {
+            errors,
+            role,
+            email,
+            password,
+          });
+        }
         break;
       case "whitelabel":
         user = await WhiteLabel.findOne({ email });
+        if (!user) {
+          errors.push({ msg: "That email is not registered" });
+          return res.render("../views/authentication/login", {
+            errors,
+            role,
+            email,
+            password,
+          });
+        }
         break;
       case "masterdistributor":
         user = await MasterDistributor.findOne({ email });
+        if (!user) {
+          errors.push({ msg: "That email is not registered" });
+          return res.render("../views/authentication/login", {
+            errors,
+            role,
+            email,
+            password,
+          });
+        }
         break;
       case "distributor":
         user = await Distributor.findOne({ email });
+        if (!user) {
+          errors.push({ msg: "That email is not registered" });
+          return res.render("../views/authentication/login", {
+            errors,
+            role,
+            email,
+            password,
+          });
+        }
         break;
       case "subdistributor":
         user = await SubDistributor.findOne({ email });
+        if (!user) {
+          errors.push({ msg: "That email is not registered" });
+          return res.render("../views/authentication/login", {
+            errors,
+            role,
+            email,
+            password,
+          });
+        }
         break;
       case "retailer":
         user = await Retailer.findOne({ email });
+        if (!user) {
+          errors.push({ msg: "That email is not registered" });
+          return res.render("../views/authentication/login", {
+            errors,
+            role,
+            email,
+            password,
+          });
+        }
         break;
       default:
         return res.status(400).send("Invalid role selected.");
     }
 
-    if (!user) {
-      errors.push({ msg: "That email is not registered" });
-      return res.render("../views/authentication/login", {
-        errors,
-        role,
-        email,
-        password,
-      });
-    }
-
-    // Check password
-    if (!(await user.comparePassword(password))) {
+    if (user && (await user.comparePassword(password))) {
+      req.session.userId = user._id;
+      req.session.role = user.role;
+    } else {
       errors.push({ msg: "Incorrect password" });
       return res.render("../views/authentication/login", {
         errors,
@@ -380,9 +418,9 @@ router.post("/login", async (req, res) => {
     }
 
     // Generate OTP
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP
     user.otp = otp;
-    user.otpExpires = Date.now() + 10 * 60 * 1000;
+    user.otpExpires = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
     await user.save();
 
     // Send OTP via email
@@ -399,19 +437,17 @@ router.post("/login", async (req, res) => {
         req.flash("error_msg", "Error sending OTP. Please try again.");
         return res.redirect("/login");
       } else {
-        console.log("Email sent:", info.response);
-        req.session.tempUser = { id: req.session.user._id };
-        console.log("1");
-        return res.redirect("/otp");
+        console.log("Email sent: " + info.response);
+        // Store user ID in session for OTP verification
+        req.session.tempUser = { id: user._id };
+        res.redirect("/otp");
       }
     });
   } catch (err) {
-    console.log("2");
-    console.log("Login error:", err);
+    console.log(err);
     res.redirect("/login");
   }
 });
-
 // OTP Verification Route - GET
 router.get("/otp", (req, res) => {
   if (!req.session.tempUser) {
@@ -439,6 +475,7 @@ router.post("/otp", async (req, res) => {
   try {
     let user;
     let role = req.session.role;
+    console.log(role);
 
     switch (role) {
       case "admin":
@@ -483,7 +520,7 @@ router.post("/otp", async (req, res) => {
     req.session.user = user;
     delete req.session.tempUser;
 
-    res.redirect("/dashboard" + user.role);
+    res.redirect("/about");
   } catch (err) {
     console.log(err);
     res.redirect("/login");
