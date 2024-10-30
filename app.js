@@ -59,15 +59,7 @@ app.use(
   session({
     secret: "This is my secret",
     resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({
-      mongoUrl: process.env.DB_URL,
-      ttl: 14 * 24 * 60 * 60, // Session expiration in seconds (optional)
-    }),
-    cookie: {
-      secure: process.env.NODE_ENV === "production", // Set to true if using https
-      maxAge: 14 * 24 * 60 * 60 * 1000, // Cookie expiration in milliseconds
-    },
+    saveUninitialized: false,
   })
 );
 app.use(flash());
