@@ -440,11 +440,12 @@ router.post("/login", async (req, res) => {
         console.log("Email sent: " + info.response);
         // Store user ID in session for OTP verification
         req.session.tempUser = { id: user._id };
+        console.log(req.session.tempUser);
         res.redirect("/otp");
       }
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.redirect("/login");
   }
 });
