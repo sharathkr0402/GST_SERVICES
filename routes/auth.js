@@ -400,11 +400,13 @@ router.post("/login", async (req, res) => {
         return res.redirect("/login");
       } else {
         console.log("Email sent:", info.response);
-        req.session.tempUser = { id: user._id };
+        req.session.tempUser = { id: req.session.user._id };
+        console.log("1");
         return res.redirect("/otp");
       }
     });
   } catch (err) {
+    console.log("2");
     console.log("Login error:", err);
     res.redirect("/login");
   }
