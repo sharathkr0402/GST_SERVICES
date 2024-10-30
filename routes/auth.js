@@ -9,6 +9,7 @@ const path = require("path");
 const nodemailer = require("nodemailer");
 const session = require("express-session");
 const path1 = require("path");
+const MongoStore = require("connect-mongo");
 //
 //
 //
@@ -20,7 +21,14 @@ const Distributor = require("../models/Distributor");
 const SubDistributor = require("../models/Subdistributor");
 const Retailer = require("../models/Retailer");
 const Whitelabel = require("../models/Whitelabel");
-
+router.use(
+  session({
+    secret: "this is my secret",
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongoUrl: process.env.DB_URL }),
+  })
+);
 //
 //
 //
@@ -377,8 +385,6 @@ router.post("/login", async (req, res) => {
     user.otpExpires = Date.now() + 10 * 60 * 1000;
     await user.save();
 
-    console.log("Generated OTP:", otp);
-
     // Send OTP via email
     const mailOptions = {
       from: "sharathkr0402@gmail.com",
@@ -399,7 +405,7 @@ router.post("/login", async (req, res) => {
       }
     });
   } catch (err) {
-    console.error("Login error:", err);
+    console.log("Login error:", err);
     res.redirect("/login");
   }
 });
