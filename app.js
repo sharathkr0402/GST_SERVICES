@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+require("dotenv").config();
 
 const express = require("express");
 const app = express();
@@ -13,6 +11,7 @@ const Razorpay = require("razorpay");
 const bodyParser = require("body-parser");
 const MongoStore = require("connect-mongo");
 const bcrypt = require("bcryptjs");
+const multer = require("multer");
 //
 //
 //
@@ -60,7 +59,15 @@ app.use(
   session({
     secret: "This is my secret",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.DB_URL,
+      ttl: 14 * 24 * 60 * 60, // Session expiration in seconds (optional)
+    }),
+    cookie: {
+      secure: process.env.NODE_ENV === "production", // Set to true if using https
+      maxAge: 14 * 24 * 60 * 60 * 1000, // Cookie expiration in milliseconds
+    },
   })
 );
 app.use(flash());
@@ -910,6 +917,7 @@ app.post("/delete/:id/:redirect", ensureAuthenticated, async (req, res) => {
 //
 //
 //Add images to Carousel
+
 const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
