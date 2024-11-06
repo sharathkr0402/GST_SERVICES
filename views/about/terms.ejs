@@ -3,10 +3,60 @@
     text-align: center;
   }
   .term {
-    margin: 40px;
-    padding: 40px;
+    margin: 40px auto;
+    padding: 30px 50px;
+    max-width: 1100px;
     background-color: antiquewhite;
     border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+  .term p {
+    text-align: justify;
+  }
+  @media (max-width: 768px) {
+    .term {
+      margin: 10px;
+      padding: 15px;
+    }
+
+    h1 {
+      font-size: 1.5em;
+    }
+
+    h3,
+    h4 {
+      font-size: 1.2em;
+    }
+
+    p {
+      font-size: 1em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .term {
+      margin: 10px;
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 1.2em;
+    }
+
+    h3,
+    h4 {
+      font-size: 1em;
+    }
+    .term ol li {
+      font-size: 0.9em;
+    }
+    .term ol h5 {
+      font-size: 1em;
+    }
+
+    p {
+      font-size: 0.9em;
+    }
   }
 </style>
 <% layout('layouts/boilerplate')%>
@@ -30,14 +80,12 @@
   </p>
   <h4>
     1) Terms & Conditions governing the use of
-    <a href="http://www.bharathiyagrameenabanking.com/"
-      >http://www.bharathiyagrameenabanking.com/</a
-    >
+    <a href="http://www.bharathiyagrameenabanking.com/">http://www.bgb.com/</a>
   </h4>
   <p>
     Welcome to
     <a href="http://www.bharathiyagrameenabanking.com/"
-      >http://www.bharathiyagrameenabanking.com/</a
+      >www.bharathiyagrameenabanking.com/</a
     >. This site is managed and owned by SERVEWISE INDIA PVT LTD, located at
     #2555, Kantharaj Urs Road, KG Koppal Saraswatipuram, Mysore-09. By accessing
     our website and utilizing the information, resources, services, products,
@@ -119,7 +167,7 @@
               Misrepresents your identity or impersonates another person or
               entity, including employees or representatives of
               <a href="http://www.bharathiyagrameenabanking.com/"
-                >http://www.bharathiyagrameenabanking.com/</a
+                >http://www.bgb.com/</a
               >.
             </li>
           </ol>
@@ -135,7 +183,7 @@
           open communication tools on our website, as long as it does not
           infringe on third-party rights, becomes the property of
           <a href="http://www.bharathiyagrameenabanking.com/"
-            >http://www.bharathiyagrameenabanking.com/</a
+            >http://www.bgb.com/</a
           >. This grants us a permanent, worldwide, royalty-free license to use,
           modify, translate, publish, display, or distribute the content. This
           only applies to content shared via open communication tools and does
@@ -143,7 +191,7 @@
           protected under our Privacy Policy.
         </li>
         <li>
-          You agree to indemnify and protect bharathiyagrameenabanking.com, a
+          You agree to indemnify and protect bharathiyagrameenabanking, a
           digital property of SERVEWISE INDIA Private Limited, along with its
           affiliates, directors, officers, employees, agents, and licensors,
           from any losses, costs, damages, or legal fees resulting from any
@@ -173,7 +221,7 @@
       explicitly agree that any claims against us will be limited to the amount
       you paid, if any, for the use of our products or services.
       <a href="http://www.bharathiyagrameenabanking.com/"
-        >http://www.bharathiyagrameenabanking.com/</a
+        >http://www.bgb.com/</a
       >
       is not liable for any direct, indirect, incidental, consequential, or
       exemplary damages arising from your use of our Resources, including any
@@ -183,8 +231,7 @@
     <li>
       <h5>COPYRIGHTS / TRADEMARKS</h5>
       All materials and content available on
-      <a href="http://www.bharathiyagrameenabanking.com/"
-        >http://www.bharathiyagrameenabanking.com/</a
+      <a href="http://www.bharathiyagrameenabanking.com/">http://www.bgb.com/</a
       >, including text, graphics, website names, code, images, and logos, are
       the intellectual property of SERVEWISE INDIA Private Limited and are
       protected under applicable copyright and trademark laws. Any unauthorized
@@ -223,7 +270,7 @@
       <h5>GUARANTEE</h5>
       Unless explicitly stated otherwise,
       <a href="http://www.bharathiyagrameenabanking.com/"
-        >http://www.bharathiyagrameenabanking.com/</a
+        >http://www.bgb.com/</a
       >
       disclaims all warranties and conditions, whether express or implied,
       including but not limited to implied warranties of merchantability,

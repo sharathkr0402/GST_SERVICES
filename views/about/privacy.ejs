@@ -1,196 +1,253 @@
 <style>
-  h1 {
-    text-align: center;
-  }
-  .term {
-    margin: 40px;
-    padding: 40px;
+  /* Styles specific to the Privacy Policy section */
+  #privacy .privacy-policy {
+    margin: 40px auto;
+    padding: 30px 50px;
     background-color: antiquewhite;
     border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    max-width: 1100px;
+    overflow: hidden;
+  }
+  #privacy .privacy-policy p {
+    text-align: justify;
+  }
+  #privacy .privacy-policy h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #privacy .privacy-policy p {
+    margin-bottom: 15px;
+  }
+
+  #privacy .privacy-policy h4 {
+    margin-top: 20px;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 768px) {
+    #privacy .privacy-policy {
+      margin: 15px;
+      padding: 15px;
+    }
+
+    #privacy .privacy-policy h1 {
+      font-size: 2em; /* Smaller font size for mobile */
+    }
+
+    #privacy .privacy-policy p,
+    #privacy .privacy-policy h4 {
+      font-size: 0.9em; /* Adjust font size for mobile */
+    }
+  }
+
+  @media (max-width: 480px) {
+    #privacy .privacy-policy h1 {
+      font-size: 1.5em; /* Further reduce font size for very small screens */
+    }
+
+    #privacy .privacy-policy p,
+    #privacy .privacy-policy h4 {
+      font-size: 0.85em; /* Further adjust font size for very small screens */
+    }
+    #privacy ol li {
+      font-size: 0.75em;
+    }
+
+    #privacy .privacy-policy {
+      padding: 10px; /* Minimal padding for very small screens */
+    }
   }
 </style>
-<% layout('layouts/boilerplate')%>
-<div class="term">
-  <h1>Privacy Policy</h1>
-  <p>
-    This Privacy Policy details how bharathiyagrameenabanking.com manages the
-    collection, usage, maintenance, and disclosure of information from users
-    (hereafter referred to as "Users") who visit the
-    <a href="http://www.bharathiyagrameenabanking.com/"
-      >http://www.bharathiyagrameenabanking.com/</a
-    >
-    website (referred to as the "Site"). This policy is applicable to the Site
-    and all the products and services offered by SERVEWISE INDIA Private
-    Limited.
-  </p>
+<% layout('layouts/boilerplate') %>
+<div id="privacy">
+  <div class="privacy-policy">
+    <h1>Privacy Policy</h1>
+    <p>
+      This Privacy Policy details how bharathiyagrameenabanking.com manages the
+      collection, usage, maintenance, and disclosure of information from users
+      (hereafter referred to as "Users") who visit the
+      <a href="http://www.bharathiyagrameenabanking.com/"
+        >http://www.bharathiyagrameenabanking.com/</a
+      >
+      website (referred to as the "Site"). This policy is applicable to the Site
+      and all the products and services offered by SERVEWISE INDIA Private
+      Limited.
+    </p>
 
-  <h4>1. PERSONAL IDENTIFICATION INFORMATION</h4>
-  <p>
-    We may collect personal identification information from Users in various
-    ways, including, but not limited to, when Users access our Site, sign up on
-    the Site, make a purchase, or participate in other activities, features, or
-    services we provide. Users might be requested to provide their name, email,
-    mailing address, phone number, date of birth, or incorporation details.
-    However, Users have the option to browse our Site anonymously. We will only
-    gather personal identification information if Users willingly provide it to
-    us. Users can always choose not to submit personal information, though this
-    may limit their ability to engage in certain activities on the Site.
-  </p>
+    <h4>1. PERSONAL IDENTIFICATION INFORMATION</h4>
+    <p>
+      We may collect personal identification information from Users in various
+      ways, including, but not limited to, when Users access our Site, sign up
+      on the Site, make a purchase, or participate in other activities,
+      features, or services we provide. Users might be requested to provide
+      their name, email, mailing address, phone number, date of birth, or
+      incorporation details. However, Users have the option to browse our Site
+      anonymously. We will only gather personal identification information if
+      Users willingly provide it to us. Users can always choose not to submit
+      personal information, though this may limit their ability to engage in
+      certain activities on the Site.
+    </p>
 
-  <h4>2. NON-PERSONAL IDENTIFICATION INFORMATION</h4>
-  <p>
-    We may also collect non-personal identification information about Users
-    whenever they engage with our Site. This information might encompass details
-    such as the browser type, computer specifications, and technical data
-    regarding the User’s connection to our Site, including the operating system
-    and Internet service provider used.
-  </p>
+    <h4>2. NON-PERSONAL IDENTIFICATION INFORMATION</h4>
+    <p>
+      We may also collect non-personal identification information about Users
+      whenever they engage with our Site. This information might encompass
+      details such as the browser type, computer specifications, and technical
+      data regarding the User’s connection to our Site, including the operating
+      system and Internet service provider used.
+    </p>
 
-  <h4>3. WEB BROWSER COOKIES</h4>
-  <p>
-    Our Site may use "cookies" to enhance the User's experience. Cookies are
-    files placed by the User's web browser on their hard drive for
-    record-keeping and can also track information about Users. Users may opt to
-    configure their web browsers to refuse cookies or to alert them when cookies
-    are sent. However, if they do so, some areas of the Site may not work
-    correctly.
-  </p>
+    <h4>3. WEB BROWSER COOKIES</h4>
+    <p>
+      Our Site may use "cookies" to enhance the User's experience. Cookies are
+      files placed by the User's web browser on their hard drive for
+      record-keeping and can also track information about Users. Users may opt
+      to configure their web browsers to refuse cookies or to alert them when
+      cookies are sent. However, if they do so, some areas of the Site may not
+      work correctly.
+    </p>
 
-  <h4>4. HOW WE USE COLLECTED INFORMATION</h4>
-  <p>
-    SERVEWISE INDIA may gather and utilize Users’ personal information for the
-    following purposes:
-  </p>
-  <ol type="a">
-    <li>
-      To enhance customer service – The information provided by Users helps us
-      respond to customer service requests and support requirements more
-      effectively.
-    </li>
-    <li>
-      To customize the User experience – We may analyze information in aggregate
-      to understand how our Users as a whole utilize the services and resources
-      provided on our Site.
-    </li>
-    <li>
-      To refine our Site – User feedback may be used to improve our products and
-      services.
-    </li>
-    <li>
-      To process transactions – The information provided by Users during the
-      order process will only be used to fulfill that order. We do not share
-      this information with external parties unless necessary to provide the
-      service.
-    </li>
-    <li>
-      To conduct promotions, contests, surveys, or other Site features – To send
-      Users information they have consented to receive about topics we believe
-      may interest them.
-    </li>
-    <li>
-      To send periodic emails – We may use the email address to inform Users
-      about their order and updates. It may also be utilized to address their
-      inquiries, questions, or other requests. If Users opt to subscribe to our
-      mailing list, they will receive emails that may include company news,
-      updates, related product, or service information. Users may unsubscribe
-      from receiving future emails by following the unsubscribe instructions
-      included in each email or by contacting us through our Site.
-    </li>
-  </ol>
+    <h4>4. HOW WE USE COLLECTED INFORMATION</h4>
+    <p>
+      SERVEWISE INDIA may gather and utilize Users’ personal information for the
+      following purposes:
+    </p>
+    <ol type="a">
+      <li>
+        To enhance customer service – The information provided by Users helps us
+        respond to customer service requests and support requirements more
+        effectively.
+      </li>
+      <li>
+        To customize the User experience – We may analyze information in
+        aggregate to understand how our Users as a whole utilize the services
+        and resources provided on our Site.
+      </li>
+      <li>
+        To refine our Site – User feedback may be used to improve our products
+        and services.
+      </li>
+      <li>
+        To process transactions – The information provided by Users during the
+        order process will only be used to fulfill that order. We do not share
+        this information with external parties unless necessary to provide the
+        service.
+      </li>
+      <li>
+        To conduct promotions, contests, surveys, or other Site features – To
+        send Users information they have consented to receive about topics we
+        believe may interest them.
+      </li>
+      <li>
+        To send periodic emails – We may use the email address to inform Users
+        about their order and updates. It may also be utilized to address their
+        inquiries, questions, or other requests. If Users opt to subscribe to
+        our mailing list, they will receive emails that may include company
+        news, updates, related product, or service information. Users may
+        unsubscribe from receiving future emails by following the unsubscribe
+        instructions included in each email or by contacting us through our
+        Site.
+      </li>
+    </ol>
 
-  <h4>5. HOW WE PROTECT YOUR INFORMATION</h4>
-  <p>
-    We implement appropriate data collection, storage, and processing protocols,
-    as well as security measures, to safeguard against unauthorized access,
-    alteration, disclosure, or destruction of your personal information,
-    username, password, transaction information, and data stored on our Site.
-  </p>
-  <p>
-    Sensitive and confidential data exchanged between the Site and its Users is
-    transmitted over a secure SSL communication channel and is encrypted with
-    digital signatures. Our Site also adheres to PCI vulnerability standards to
-    create a secure environment for Users.
-  </p>
+    <h4>5. HOW WE PROTECT YOUR INFORMATION</h4>
+    <p>
+      We implement appropriate data collection, storage, and processing
+      protocols, as well as security measures, to safeguard against unauthorized
+      access, alteration, disclosure, or destruction of your personal
+      information, username, password, transaction information, and data stored
+      on our Site.
+    </p>
+    <p>
+      Sensitive and confidential data exchanged between the Site and its Users
+      is transmitted over a secure SSL communication channel and is encrypted
+      with digital signatures. Our Site also adheres to PCI vulnerability
+      standards to create a secure environment for Users.
+    </p>
 
-  <h4>6. SHARING YOUR PERSONAL INFORMATION</h4>
-  <p>
-    We may collaborate with third-party service providers to assist in managing
-    our business operations and the Site or to handle activities on our behalf,
-    such as distributing newsletters or conducting surveys. We may share your
-    information with these third parties for those limited purposes, provided
-    you have given us your consent.
-  </p>
-  <p>
-    You acknowledge and consent to our sharing your personal information with
-    third-party service providers who help us run our business and the Site or
-    manage activities on our behalf, such as distributing newsletters or
-    conducting surveys. Your information may be shared with these third parties
-    solely for those limited purposes.
-  </p>
-  <p>
-    You further grant us permission to collect, store, process, and transfer
-    your information to our affiliated entities to provide services through
-    their platform. You also allow them to contact you through any means,
-    including emails, phone calls, and messages. Should you choose to utilize
-    services from our affiliated entities, your information may also be subject
-    to their respective privacy policies, and we will not be liable for their
-    privacy practices.
-  </p>
-  <p>
-    If we undergo a merger, acquisition, sale, reorganization, joint venture,
-    transfer, or disposition of any portion of our business, we will continue to
-    safeguard the confidentiality of user information and will notify affected
-    Users beforehand if sharing information becomes necessary.
-  </p>
+    <h4>6. SHARING YOUR PERSONAL INFORMATION</h4>
+    <p>
+      We may collaborate with third-party service providers to assist in
+      managing our business operations and the Site or to handle activities on
+      our behalf, such as distributing newsletters or conducting surveys. We may
+      share your information with these third parties for those limited
+      purposes, provided you have given us your consent.
+    </p>
+    <p>
+      You acknowledge and consent to our sharing your personal information with
+      third-party service providers who help us run our business and the Site or
+      manage activities on our behalf, such as distributing newsletters or
+      conducting surveys. Your information may be shared with these third
+      parties solely for those limited purposes.
+    </p>
+    <p>
+      You further grant us permission to collect, store, process, and transfer
+      your information to our affiliated entities to provide services through
+      their platform. You also allow them to contact you through any means,
+      including emails, phone calls, and messages. Should you choose to utilize
+      services from our affiliated entities, your information may also be
+      subject to their respective privacy policies, and we will not be liable
+      for their privacy practices.
+    </p>
+    <p>
+      If we undergo a merger, acquisition, sale, reorganization, joint venture,
+      transfer, or disposition of any portion of our business, we will continue
+      to safeguard the confidentiality of user information and will notify
+      affected Users beforehand if sharing information becomes necessary.
+    </p>
 
-  <h4>7. LINKS TO OTHER SITES</h4>
-  <p>
-    Our platform may contain links to external Sites. Such Sites may collect
-    User information. We recommend that Users review the privacy policies of
-    these Sites, as we are not responsible for their privacy practices.
-  </p>
+    <h4>7. LINKS TO OTHER SITES</h4>
+    <p>
+      Our platform may contain links to external Sites. Such Sites may collect
+      User information. We recommend that Users review the privacy policies of
+      these Sites, as we are not responsible for their privacy practices.
+    </p>
 
-  <h4>8. GOOGLE ADSENSE</h4>
-  <p>
-    Some advertisements may be served by Google. Google's use of the DART cookie
-    allows it to serve ads to Users based on their visits to our Site and other
-    Sites on the Internet. The DART cookie utilizes "non-personally identifiable
-    information" and does NOT track personal information about you, such as your
-    name, email address, or physical address. You can opt out of the use of the
-    DART cookie by visiting the Google ad and content network privacy policy at
-    <a href="http://www.google.com/privacy_ads.html"
-      >http://www.google.com/privacy_ads.html</a
-    >.
-  </p>
+    <h4>8. GOOGLE ADSENSE</h4>
+    <p>
+      Some advertisements may be served by Google. Google's use of the DART
+      cookie allows it to serve ads to Users based on their visits to our Site
+      and other Sites on the Internet. The DART cookie utilizes "non-personally
+      identifiable information" and does NOT track personal information about
+      you, such as your name, email address, or physical address. You can opt
+      out of the use of the DART cookie by visiting the Google ad and content
+      network privacy policy at
+      <a href="http://www.google.com/privacy_ads.html"
+        >http://www.google.com/privacy_ads.html</a
+      >.
+    </p>
 
-  <h4>9. COMPLIANCE WITH THE CHILDREN'S ONLINE PRIVACY PROTECTION ACT</h4>
-  <p>
-    Protecting the privacy of young individuals is of significant importance.
-    Therefore, we do not collect or maintain any information from individuals we
-    are aware are under 13 years old, and no part of our Site is structured to
-    attract anyone under this age.
-  </p>
+    <h4>9. COMPLIANCE WITH THE CHILDREN'S ONLINE PRIVACY PROTECTION ACT</h4>
+    <p>
+      Protecting the privacy of young individuals is of significant importance.
+      Therefore, we do not collect or maintain any information from individuals
+      we are aware are under 13 years old, and no part of our Site is structured
+      to attract anyone under this age.
+    </p>
 
-  <h4>10. CHANGES TO THIS PRIVACY POLICY</h4>
-  <p>
-    SERVEWISE INDIA reserves the right to modify this privacy policy at any
-    time. When we make changes, we will notify you via email. We encourage Users
-    to frequently check this page for any updates to stay informed about how we
-    are protecting the personal information we collect. You acknowledge and
-    agree that it is your responsibility to periodically review this privacy
-    policy and be aware of any modifications. Your continued use of our platform
-    and services will indicate your acceptance of the revised policy and will
-    serve as confirmation that you agree to its terms, which will take effect
-    from the first day of your use of the platform. If the changes are
-    substantial, we will provide a more prominent notice.
-  </p>
+    <h4>10. CHANGES TO THIS PRIVACY POLICY</h4>
+    <p>
+      SERVEWISE INDIA reserves the right to modify this privacy policy at any
+      time. When we make changes, we will notify you via email. We encourage
+      Users to frequently check this page for any updates to stay informed about
+      how we are protecting the personal information we collect. You acknowledge
+      and agree that it is your responsibility to periodically review this
+      privacy policy and be aware of any modifications. Your continued use of
+      our platform and services will indicate your acceptance of the revised
+      policy and will serve as confirmation that you agree to its terms, which
+      will take effect from the first day of your use of the platform. If the
+      changes are substantial, we will provide a more prominent notice.
+    </p>
 
-  <h4>11. CONTACT US</h4>
-  <p>
-    If you have any inquiries regarding this Privacy Policy, the operations of
-    this site, or your interactions with this site, please reach out to us at:
-    SERVEWISE INDIA PRIVATE LIMITED.
-  </p>
-  <p># 2555, Kantharaj Urs road, KG Koppal Saraswatipuram, Mysore-09</p>
-  <p>Phone: +91 8050-885-885.</p>
+    <h4>11. CONTACT US</h4>
+    <p>
+      If you have any inquiries regarding this Privacy Policy, the operations of
+      this site, or your interactions with this site, please reach out to us at:
+      SERVEWISE INDIA PRIVATE LIMITED.
+    </p>
+    <p># 2555, Kantharaj Urs road, KG Koppal Saraswatipuram, Mysore-09</p>
+    <p>Phone: +91 8050-885-885.</p>
+  </div>
 </div>

@@ -1,8 +1,39 @@
 <style>
   #all {
-    margin: 20px;
+    margin: 40px 20px;
     padding: 20px;
     background-color: aliceblue;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+  }
+
+  thead {
+    background-color: #cfe2ff;
+  }
+
+  @media (max-width: 768px) {
+    #all {
+      margin: 10px;
+      padding: 10px;
+    }
+    th,
+    td {
+      padding: 5px;
+      font-size: 7px;
+    }
   }
 </style>
 <% layout('layouts/boilerplate')%>
@@ -19,7 +50,7 @@
       </tr>
     </thead>
     <tbody>
-      <%for(let a of allMasterDistributors){ let i=0; i=i+1%>
+      <%let i=0;for(let a of allMasterDistributors){ i=i+1%>
       <tr>
         <td><b><%=i%></b></td>
         <td><%=a.name%></td>

@@ -1,89 +1,172 @@
-<% layout('layouts/boilerplate')%>
-<div class="container-fluid p-5 fs-5">
+<style>
+  /* General container styling */
+  .marketing {
+    max-width: 1200px;
+    background-color: antiquewhite;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    padding: 50px;
+    text-align: justify;
+  }
+
+  /* Heading */
+  h2 {
+    font-size: 2rem;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Responsive text sizing */
+  p,
+  ul,
+  li {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  /* Table responsiveness */
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  /* Table styling */
+  th {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  /* Links */
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .marketing {
+      margin: 15px;
+      padding: 15px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p,
+    ul,
+    li {
+      font-size: 0.9rem;
+    }
+
+    th,
+    td {
+      font-size: 0.85rem;
+      padding: 0.5rem;
+    }
+  }
+</style>
+<% layout('layouts/boilerplate') %>
+<div class="marketing">
   <h2>MARKETING</h2>
   <p>
-    Classified submission is the one of the important part of off page seo
-    strategy.Through classified ads we can get instant traffic and leads by
-    doing and creating more ads in the classified submissions. There are several
-    web-sites where one can post their ads for free or can promote their
-    businesses by posting the relevant ads. And these sites are providing
-    several facilities to the users such that the method of advertising,
-    buying/selling, promoting, marketing etc. has been modified forever. In
-    order to benefit from classified ad posting, it’s necessary to make sure
-    that the directories have a good page rank. You can also use Alexa to
-    understand the site rank and also determine the sites that link to it. This
-    will facilitate in building your classified advertising directory list. Post
-    the ads in the directories that have a high potential of customers.
+    Classified submission is one of the important parts of off-page SEO
+    strategy. Through classified ads, we can get instant traffic and leads by
+    creating more ads in classified submissions. Many websites allow users to
+    post ads for free, promoting businesses through various ad formats. These
+    platforms offer convenient options for advertising, buying/selling, and
+    marketing, transforming how people interact with classified ads. To benefit
+    from classified ad posting, ensure that directories have a good page rank,
+    which you can check with tools like Alexa. This helps in building a valuable
+    directory list, where you can post ads in directories with a high customer
+    reach.
   </p>
   <p>
-    Classified Ads are helpful for someone who is not in the organic ranking.
+    Classified Ads are helpful for those who don't have organic search ranking.
   </p>
   <ul>
-    <li>
-      For small business organizations who cannot afford themselves to promote
-      within the organic listings.
-    </li>
-    <li>For beginners who require business from every possible resources.</li>
-    <li>Those who need to sell their products and services immediately.</li>
-    <li>
-      Companies that need to bid for consumer needs as a lot of customers
-      searching for specialized services place ads here as well.
-    </li>
+    <li>Small businesses with limited budgets for organic promotion.</li>
+    <li>Beginners who need to explore every potential business resource.</li>
+    <li>Those who need to sell products or services immediately.</li>
+    <li>Companies bidding for customers seeking specific services.</li>
   </ul>
   <p>Thanks</p>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Title</th>
-        <th scope="col">DOCUMENT LINK</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>How to create Google Business Listing</td>
-        <td><a href="marketing/marketingdoc1">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to post ad in craigslist org</td>
-        <td><a href="marketing/marketingdoc2">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to post ad in locan to</td>
-        <td><a href="marketing/marketingdoc3">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to post ad in olx</td>
-        <td><a href="marketing/marketingdoc4">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to post ad in quikr</td>
-        <td><a href="marketing/marketingdoc5">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to post in India Mart</td>
-        <td><a href="marketing/marketingdoc6">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to post ad in click in</td>
-        <td><a href="marketing/marketingdoc7">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to post ad in clickooz</td>
-        <td><a href="marketing/marketingdoc8">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to Post Ad in clickindia.com</td>
-        <td><a href="marketing/marketingdoc9">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>How to post ad in 99localads</td>
-        <td><a href="marketing/marketingdoc10">Document Link</a></td>
-      </tr>
-      <tr>
-        <td>Just Dial Free Listing</td>
-        <td><a href="marketing/marketingdoc11">Document Link</a></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">DOCUMENT LINK</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>How to create Google Business Listing</td>
+          <td><a href="marketing/marketingdoc1">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post ad on craigslist.org</td>
+          <td><a href="marketing/marketingdoc2">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post ad on locanto</td>
+          <td><a href="marketing/marketingdoc3">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post ad on OLX</td>
+          <td><a href="marketing/marketingdoc4">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post ad on Quikr</td>
+          <td><a href="marketing/marketingdoc5">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post on IndiaMart</td>
+          <td><a href="marketing/marketingdoc6">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post ad on Click.in</td>
+          <td><a href="marketing/marketingdoc7">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post ad on Clickooz</td>
+          <td><a href="marketing/marketingdoc8">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post ad on ClickIndia.com</td>
+          <td><a href="marketing/marketingdoc9">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>How to post ad on 99LocalAds</td>
+          <td><a href="marketing/marketingdoc10">Document Link</a></td>
+        </tr>
+        <tr>
+          <td>Just Dial Free Listing</td>
+          <td><a href="marketing/marketingdoc11">Document Link</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

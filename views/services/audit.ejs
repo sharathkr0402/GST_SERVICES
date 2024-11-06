@@ -1,23 +1,27 @@
 <style>
   #accountingdiv {
-    margin: 30px;
-    padding: 10px 30px 10px 30px;
-    background-color: aliceblue;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
   #accountingtb {
+    width: 100%;
+    table-layout: fixed;
     text-align: center;
     vertical-align: middle;
   }
-  #accountingtb th {
-    width: 25px;
-    padding: 20px;
-  }
+  #accountingtb th,
   #accountingtb td {
-    padding: 20px;
+    padding: 10px;
+    word-wrap: break-word;
+    font-size: 0.9em;
   }
   #accountingdiv h3 {
     text-align: center;
     padding: 5px;
+    font-size: 1.2em;
   }
   .fa-folder-open {
     font-size: 32px;
@@ -63,6 +67,7 @@
     margin-top: 40px;
     margin-left: 10px;
   }
+
   #copyshare {
     display: flex;
     justify-content: center;
@@ -72,6 +77,9 @@
     margin-left: 20px;
     margin-right: 20px;
   }
+  .priceClass input {
+    width: 100px;
+  }
   #addform {
     text-align: center;
   }
@@ -80,6 +88,58 @@
     padding: 10px;
     font-weight: bold;
     width: 300px;
+  }
+
+  /* Mobile-specific styles */
+  @media (max-width: 768px) {
+    #accountingdiv h3,
+    h5 {
+      font-size: 0.9em;
+    }
+    #accountingdiv button {
+      padding: 2px;
+      border-radius: 2px;
+      margin: 2px;
+    }
+    #accountingtb {
+      width: auto;
+    }
+    #accountingdiv {
+      margin: 10px;
+      padding: 5px;
+    }
+
+    #accountingtb,
+    #accountingtb th,
+    #accountingtb td {
+      font-size: 0.7em;
+      padding: 8px 4px;
+    }
+
+    /* Modal styling */
+    .modal-content {
+      padding: 5px;
+      width: 90%;
+    }
+
+    /* Adjust button sizing for mobile */
+    .btn {
+      font-size: 0.7em;
+      padding: 5px 10px;
+    }
+
+    .fa-folder-open {
+      font-size: 24px;
+    }
+
+    /* Adjust "Add Service" button */
+    #addbtn {
+      width: 80%;
+      font-size: 1em;
+    }
+    .priceClass input {
+      width: 30px !important;
+    }
   }
 </style>
 <% layout('layouts/boilerplate')%>
@@ -167,8 +227,8 @@
         </td>
         <td class="priceClass" id="pbtn<%=acc._id%>">
           <form action="/editprice/<%=acc._id%>/audit" method="POST">
-            <b>&#8377;</b> <input name="uprice" type="text" style="width:100px"
-            <% if (user.role=="retailer") { %> disabled style="border: none;
+            <b>&#8377;</b> <input name="uprice" type="text" <% if
+            (user.role=="retailer") { %> disabled style="border: none;
             color:black; width: 60px;" <% } %> value="<%=acc.price%>"
             class="fw-bold" > <% if (user.role=="admin" ||
             user.role=="distributor"|| user.role=="subdistributor"){ %>

@@ -1,26 +1,64 @@
 <style>
   #dashboard {
-    margin: 40px;
+    margin: 20px;
     padding: 20px;
     border-radius: 10px;
     background-color: antiquewhite;
     text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
+
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+
+  ul li {
+    margin: 10px 0;
+  }
+
   ul button {
-    margin: 10px;
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
   }
-  #carouselExample {
-    width: 800px;
+
+  #imageCarousel {
+    width: 100%;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
+
   #imageform {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    ul button {
+      width: 100%;
+    }
+    .carousel-item img {
+      height: 150px;
+    }
+    #imageform,
+    #imageform button {
+      width: 100%;
+      font-size: 0.7em;
+    }
   }
 </style>
+
 <% layout('layouts/boilerplate')%>
 <div class="container mt-4">
   <!-- Upload Form (Visible only for admin) -->
@@ -29,7 +67,6 @@
     action="/upload"
     method="POST"
     enctype="multipart/form-data"
-    class="mb-4"
     id="imageform"
   >
     <div class="form-group">
@@ -52,12 +89,7 @@
         class="carousel-item <%= index === 0 ? 'active' : '' %>"
         data-bs-interval="2"
       >
-        <img
-          src="<%= image.url %>"
-          class="d-block w-100"
-          alt="Image"
-          style="height: 500px"
-        />
+        <img src="<%= image.url %>" class="d-block w-100" alt="Image" />
         <div class="carousel-caption d-none d-md-block">
           <% if (user.role === 'admin') { %>
           <form action="/delete/<%= image._id %>" method="POST">
@@ -89,14 +121,14 @@
   </div>
 </div>
 
-<div id="dashboard" class="">
-  <h1>Welcome, <%=user.name%></h1>
+<div id="dashboard">
+  <h1>Welcome, <%= user.name %></h1>
   <p>
     This is the Admin dashboard where you can manage your Retailers, Sub
     Distributors, Distributors, Master Distributors and White Labels.
   </p>
   <!-- Admin specific actions can go here -->
-  <ul type="none">
+  <ul>
     <li>
       <a href="/profileDetails"
         ><button type="button" class="btn btn-primary">Manage Profile</button>
@@ -112,7 +144,7 @@
     <li>
       <a href="/allSubDistributors"
         ><button type="button" class="btn btn-primary">
-          Manage All SubDistributor
+          Manage All SubDistributors
         </button>
       </a>
     </li>
@@ -139,6 +171,7 @@
     </li>
   </ul>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

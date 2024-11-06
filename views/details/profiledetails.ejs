@@ -1,38 +1,103 @@
 <style>
   #profilediv {
     margin: 20px;
-    padding: 0px 20px;
-    width: 650px;
-    position: relative;
-    transform: translate(50%);
+    padding: 20px;
+    max-width: 650px;
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
   }
+
   #profilediv h3 {
     text-align: center;
   }
+
   #profilediv td {
     padding: 12px;
   }
+
   #navdiv {
     display: flex;
-    padding-right: 20px;
+    padding: 20px;
     justify-content: space-evenly;
   }
-  #mdiv {
-    padding: 20px 20px 0px 20px;
+
+  #navdiv a {
+    margin: 5px 0;
   }
+
+  #navdiv button {
+    flex: 1;
+    min-width: auto;
+  }
+
   #mmdiv {
     background-color: antiquewhite;
-    margin: 20px 100px;
+    margin: 40px;
     border-radius: 10px;
     padding-bottom: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid #000;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  @media (max-width: 768px) {
+    #mmdiv {
+      margin: 20px auto;
+      width: 95%;
+    }
+    #profilediv {
+      padding: 10px;
+      width: 100%;
+    }
+    #navdiv {
+      flex-direction: column;
+    }
+    #navdiv button {
+      margin: 5px 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #profilediv {
+      padding: 10px;
+    }
+
+    #navdiv button {
+      min-width: 100px;
+    }
+
+    table,
+    th,
+    td {
+      font-size: 14px;
+    }
   }
 </style>
+
 <% layout('layouts/boilerplate')%>
 <div id="mmdiv">
   <div id="mdiv">
     <div id="navdiv">
       <a href="/profileDetails"
-        ><button class="btn btn-primary">Your Profile Details</button></a
+        ><button class="btn btn-primary">Profile Details</button></a
       >
       <a href="/bank"><button class="btn btn-primary">Bank Details</button></a>
       <a href="/kyc"><button class="btn btn-primary">KYC Details</button></a>
@@ -76,7 +141,7 @@
         </tr>
         <tr>
           <td>Wallet</td>
-          <td><b> &#8377; <%=user.wallet%></b></td>
+          <td><b>&#8377; <%=user.wallet%></b></td>
         </tr>
         <% if(user.distributorId){%>
         <tr>

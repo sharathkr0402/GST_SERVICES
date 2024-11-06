@@ -1,46 +1,92 @@
 <style>
+  /* Container and form styling */
   #login-div {
     width: 40%;
-    height: 55%;
+    min-width: 300px; /* Ensures a minimum width for smaller screens */
+    height: auto;
     position: relative;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, 10%);
-    background-color: antiquewhite;
-    padding: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
+    margin: 30px auto;
+    background-color: #f5f5dc;
+    padding: 40px;
     border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     text-align: center;
   }
-  #login-form {
-    text-align: center;
-  }
-  #login-form button {
-    font-weight: bold;
-    margin: 10px;
-  }
-  .form-label {
-    width: 200px;
-    padding-top: 5px;
-  }
-  #login-div a {
-    text-decoration: none;
-  }
-  .email-form {
-    display: flex;
-  }
-  .pass-form {
-    display: flex;
-  }
-  .role-form {
-    display: flex;
-  }
+
+  /* Form title */
   #login-div h3 {
     color: white;
-    padding: 5px;
+    background-color: #007bff;
+    padding: 10px;
     border-radius: 5px;
-    margin: 10px 0px 40px 0px;
+    margin-bottom: 30px;
+  }
+
+  /* Form control alignment */
+  .form-label {
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Flexbox layout for input fields */
+  .form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Flexbox layout for select fields */
+  .role-form {
+    margin-bottom: 1.5rem;
+  }
+
+  #login-form button {
+    font-weight: bold;
+    width: 100%;
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    #login-div {
+      width: 90%;
+      padding: 20px;
+    }
+
+    #login-div h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .form-group,
+    .role-form {
+      display: block;
+      width: 100%;
+    }
+
+    #login-form button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    #login-div {
+      padding: 15px;
+    }
+
+    #login-div h3 {
+      font-size: 1.3rem;
+      padding: 8px;
+    }
+
+    .form-group label,
+    .role-form label {
+      font-size: 0.9rem;
+    }
+
+    #login-form button {
+      font-size: 0.9rem;
+    }
   }
 </style>
 <% layout('layouts/boilerplate')%>

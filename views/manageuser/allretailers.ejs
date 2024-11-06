@@ -1,11 +1,42 @@
 <style>
   #all {
-    margin: 20px;
+    margin: 40px 20px;
     padding: 20px;
     background-color: aliceblue;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+  }
+
+  thead {
+    background-color: #cfe2ff;
+  }
+
+  @media (max-width: 768px) {
+    #all {
+      margin: 10px;
+      padding: 10px;
+    }
+    th,
+    td {
+      padding: 5px;
+      font-size: 7px;
+    }
   }
 </style>
-<% layout('layouts/boilerplate')%>
+<% layout('layouts/boilerplate') %>
 <div id="all">
   <h3 style="text-align: center">All Your Retailers</h3>
   <table id="accountingtb" class="table table-bordered border-primary">
@@ -19,15 +50,15 @@
       </tr>
     </thead>
     <tbody>
-      <%for(let a of allRetailers){ let i=0; i=i+1%>
+      <% let i = 0; for (let a of allRetailers) { i = i + 1 %>
       <tr>
-        <td><b><%=i%></b></td>
-        <td><%=a.name%></td>
-        <td><%=a.email%></td>
-        <td><%=a.mobile%></td>
-        <td><%=a.wallet%></td>
+        <td><b><%= i %></b></td>
+        <td><%= a.name %></td>
+        <td><%= a.email %></td>
+        <td><%= a.mobile %></td>
+        <td><%= a.wallet %></td>
       </tr>
-      <%}%>
+      <% } %>
     </tbody>
   </table>
 </div>

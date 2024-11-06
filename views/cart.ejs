@@ -1,42 +1,80 @@
 <style>
-  #cartdiv {
-    margin: 30px 200px;
-    text-align: center;
-  }
-  #couponprice {
-    display: flex;
-    padding: 40px 0px;
-    justify-content: center;
-  }
-  #coupon {
-    width: 400px;
-    height: 150px;
-    background-color: rgb(198, 225, 249);
-    border-radius: 10px;
-    padding: 10px;
-  }
-  #coupon p {
-    text-align: left;
-    margin-left: 30px;
-    margin-top: 10px;
-  }
-  #coupon1 {
-    display: flex;
-  }
-  #coupon1 button {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
-  #coupon1 input {
-    margin-left: 20px;
+  body {
+    font-family: Arial, sans-serif;
   }
 
-  #pricediv {
-    background-color: rgb(198, 225, 249);
-    margin-left: 80px;
-    padding: 20px 50px 20px 50px;
+  #cartdiv {
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 900px;
     border-radius: 10px;
-    width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  #couponprice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  #coupon,
+  #pricediv {
+    width: 100%;
+    max-width: 400px;
+    background-color: rgb(198, 225, 249);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  #coupon p,
+  #pricediv p {
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  #coupon1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #coupon1 button {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  #coupon1 input {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 768px) {
+    #couponprice {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    #coupon1 {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #coupon1 button,
+    #coupon1 input {
+      margin: 0 10px;
+      width: auto;
+    }
   }
 </style>
 
@@ -58,14 +96,14 @@ total=Math.floor(subtotal+gst) %>
       <tr>
         <td><%=name%></td>
         <td><b>1</b></td>
-        <td><%=price%></td>
+        <td>&#8377;<%=price%></td>
       </tr>
     </tbody>
   </table>
   <div id="couponprice">
     <div id="coupon">
       <p>Have coupon?</p>
-      <div id="coupon1" class="">
+      <div id="coupon1">
         <input type="text" class="form-control" id="coupontext" />
         <button type="button" class="btn btn-primary" id="couponbtn">
           Apply
@@ -108,4 +146,3 @@ total=Math.floor(subtotal+gst) %>
     </div>
   </div>
 </div>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>

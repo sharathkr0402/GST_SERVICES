@@ -1,12 +1,91 @@
 <style>
-  li + img {
-    margin: 40px;
+  /* Container and typography styles */
+  .marketing-div {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 40px 80px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .marketing-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+  }
+
+  /* List styling */
+  .marketing-ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .marketing-ul li {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .marketing-ul li b {
+    font-weight: bold;
+  }
+
+  /* Link styling */
+  .marketing-ul a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .marketing-ul a:hover {
+    text-decoration: underline;
+  }
+
+  /* Image styling */
+  .marketing-ul img {
+    width: 100%;
+    height: auto;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .marketing-title {
+      font-size: 1.8rem;
+    }
+    .marketing-div {
+      padding: 10px;
+    }
+    .marketing-ul li {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .marketing-title {
+      font-size: 1rem;
+    }
+    .marketing-div {
+      margin: 20px 15px;
+      padding: 10px;
+    }
+    .marketing-ul li {
+      font-size: 0.9rem;
+    }
+    .marketing-ul img {
+      margin: 10px 0;
+    }
   }
 </style>
 <% layout('layouts/boilerplate')%>
-<div class="container-fluid p-5">
-  <h3>HOW TO POST AD IN CLICK.IN</h3>
-  <ul class="fs-5">
+<div class="marketing-div">
+  <h3 class="marketing-title">HOW TO POST AD IN CLICK.IN</h3>
+  <ul class="marketing-ul">
     <li>
       <b>Step 1:</b> Before posting your ads at
       <a href="https://www.click.in/">https://www.click.in/</a>. First, you have

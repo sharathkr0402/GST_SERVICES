@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>GST SERVICES 2024</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -16,110 +22,165 @@
       referrerpolicy="no-referrer"
     />
     <style>
-      #scroll {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 80%;
-        justify-content: center;
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
       }
+
       #logodiv {
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: center;
       }
+
+      #logo {
+        width: 80px;
+        height: auto;
+        margin: 10px;
+      }
+
+      #scroll {
+        flex: 1;
+        text-align: center;
+        margin: 10px;
+      }
+
       #marquee {
         width: 100%;
         background-color: rgb(2, 145, 203);
         color: rgb(255, 149, 0);
         border-radius: 10px;
+        padding: 5px;
+        font-weight: bold;
+        font-size: 1rem;
       }
-      #logo {
-        width: 5.5%;
-        height: 5.5%;
-        margin: 0.3%;
-        margin-left: 6%;
-        margin-right: 5%;
-      }
+
       #pa {
         font-weight: bold;
-        font-size: 20px;
+        font-size: 1rem;
         color: green;
         text-align: center;
+        margin-bottom: 0px;
       }
+
+      /* Buttons for Register and Login */
       #registerlogin {
         display: flex;
-        flex-direction: row;
+        gap: 10px;
         justify-content: center;
         align-items: center;
+        margin-top: 10px;
       }
+
       #registerlogin .btn {
-        width: 100px;
-        padding-left: 20px;
-        padding-right: 20px;
-        margin-left: 15px;
-        margin-right: 15px;
-        font-size: large;
+        font-size: 1rem;
+        padding: 5px 15px;
+        min-width: 80px;
       }
+
+      /* Profile Section */
       #logout1 {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
       }
+
       #logout1 img {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
         border: 2px solid black;
-        margin: 5px;
       }
+
       #logout2 {
-        display: flex;
-        flex-direction: column;
         text-align: center;
-        width: 200px;
-        margin: 8px 0px 8px 0px;
+      }
+
+      #logout2 h5 {
+        font-size: 1rem;
+        padding-top: 5px;
+        margin: 0;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        #logo {
+          width: 50px;
+        }
+
+        #marquee {
+          font-size: 0.9rem;
+        }
+
+        #registerlogin .btn {
+          font-size: 0.9rem;
+          padding: 5px 10px;
+        }
+
+        #logout1 img {
+          width: 50px;
+          height: 50px;
+        }
+
+        #logout2 h5 {
+          font-size: 0.85rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        #logodiv p,
+        #logodiv h5 {
+          font-size: 0.7em;
+        }
+        #logodiv .btn {
+          font-size: 0.5em;
+        }
+        #scroll {
+          width: 100%;
+        }
+        #marquee {
+          display: none;
+        }
+        #registerlogin {
+          flex-direction: column;
+          gap: 5px;
+        }
       }
     </style>
   </head>
   <body>
     <div id="logodiv">
-      <img src="../images/logo.jpeg" id="logo" />
+      <img src="../images/logo.jpeg" id="logo" alt="Logo" />
       <div id="scroll">
-        <marquee id="marquee" direction="scroll" class="fw-bold fs-4">
-          Contact Your Respective District Manager for Training and
-          Support.</marquee
-        >
+        <marquee id="marquee" direction="scroll">
+          Contact Your Respective District Manager for Training and Support.
+        </marquee>
         <p id="pa">Call For Support: 8050-885-885</p>
       </div>
-      <% if (!user){ %>
+
+      <% if (!user) { %>
       <div id="registerlogin">
-        <a href="/register">
-          <button type="button" class="btn btn-warning">
-            <b>Register</b>
-          </button></a
-        >
-        <a href="/login">
-          <button type="button" class="btn btn-primary"><b>Login</b></button></a
-        >
+        <a href="/register" class="btn btn-warning"><b>Register</b></a>
+        <a href="/login" class="btn btn-primary"><b>Login</b></a>
       </div>
-      <%}else{%>
+      <% } else { %>
       <div id="logout1">
-        <a href="/profileDetails"
-          ><img src="<%= user.image %>" alt="Profile Image" width="150"
-        /></a>
+        <a href="/profileDetails">
+          <img src="<%= user.image %>" alt="Profile Image" />
+        </a>
         <div id="logout2">
-          <h5 style="font-size: 17px; padding-top: 10px">
-            <b><%= user.name %></b>
-          </h5>
-          <a href="/logout">
-            <button type="button" class="btn btn-danger">
-              <b>Logout</b>
-            </button></a
-          >
+          <h5><b><%= user.name %></b></h5>
+          <a href="/logout" class="btn btn-danger"><b>Logout</b></a>
         </div>
       </div>
-      <%}%>
+      <% } %>
     </div>
-    <%- include('../partials/navbar') %> <%- body%> <%-
+
+    <%- include('../partials/navbar') %> <%- body %> <%-
     include('../partials/footer') %>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

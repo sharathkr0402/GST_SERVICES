@@ -2,17 +2,60 @@
   h1,
   p {
     text-align: center;
+    margin: 0; /* Remove default margin */
   }
+
   .term {
-    margin: 40px;
-    padding: 40px;
+    text-align: justify;
+    margin: 40px; /* Reduced margin for better mobile spacing */
+    padding: 20px; /* Reduced padding for better mobile spacing */
     background-color: antiquewhite;
     border-radius: 10px;
+    max-width: 600px; /* Max width for larger screens */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .term p {
+    margin-bottom: 15px; /* Spacing between paragraphs */
+    line-height: 1.5; /* Improve readability */
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 768px) {
+    .term {
+      margin: 10px; /* Adjust margins for smaller screens */
+      padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    h1 {
+      font-size: 1.8em; /* Smaller font size for mobile */
+    }
+
+    p {
+      font-size: 0.9em; /* Adjust font size for mobile */
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5em; /* Further reduce font size for very small screens */
+    }
+
+    p {
+      font-size: 0.8em; /* Further adjust font size for very small screens */
+    }
+
+    .term {
+      padding: 10px; /* Minimal padding for very small screens */
+    }
   }
 </style>
-<% layout('layouts/boilerplate')%>
+
+<% layout('layouts/boilerplate') %>
 <div class="term">
-  <h1>Contact us</h1>
+  <h1>Contact Us</h1>
   <p>
     For any inquiries regarding this Privacy Policy, the operations of this
     site, or your interactions with it, please reach out to us at: SERVEWISE

@@ -8,7 +8,7 @@
     padding: 40px;
     background-color: rgb(2, 145, 203, 0.3);
     border-radius: 10px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3); /* Horizontal offset, vertical offset, blur radius, shadow color */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Horizontal offset, vertical offset, blur radius, shadow color */
   }
   .term > div {
     margin-bottom: 50px;
@@ -169,7 +169,7 @@
   #ournetwork {
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   }
   #ournetwork img {
     width: 100%;
@@ -190,6 +190,51 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /* Media Queries for Responsive Design */
+  @media (max-width: 768px) {
+    .mission {
+      flex-direction: column; /* Stack elements vertically */
+      width: 100%; /* Full width on mobile */
+    }
+    .serviceclass {
+      flex-direction: column; /* Stack services vertically */
+      width: 100%; /* Full width on mobile */
+    }
+    .infoclass {
+      width: 100%; /* Full width for info class */
+    }
+    .serviceclass .imgclass,
+    .serviceclass .infoclass {
+      width: 100%; /* Full width for both sections */
+    }
+    .serviceclass img {
+      width: 100%; /* Full width images */
+    }
+    .splservice2 .splservice3 {
+      flex-direction: column; /* Stack specialized services vertically */
+      width: 100%; /* Full width on mobile */
+      object-fit: cover;
+    }
+    .splservice3 > div {
+      margin: 10px 20px !important;
+      width: 86%; /* Full width for each service */
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5em; /* Smaller font size for headings */
+    }
+    .term {
+      margin: 10px; /* Reduce margin for mobile */
+      padding: 10px; /* Reduce padding for mobile */
+    }
+    .mission,
+    .serviceclass {
+      padding: 10px; /* Reduce padding for mobile */
+    }
   }
 </style>
 <% layout('layouts/boilerplate')%>
