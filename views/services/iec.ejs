@@ -243,13 +243,16 @@
           </form>
         </td>
         <td>
-          <button
-            type="button"
-            class="cartbtn btn btn-primary"
-            id="btn<%=acc._id%>"
-          >
-            <i class="fa-solid fa-cart-shopping"> </i> Add to Cart
-          </button>
+          <form action="/cart/<%=acc.price%>" method="post">
+            <button
+              type="submit"
+              class="cartbtn btn btn-primary"
+              name="name"
+              value="<%=acc.name%>"
+            >
+              <i class="fa-solid fa-cart-shopping"> </i> Add to Cart
+            </button>
+          </form>
         </td>
         <% if (user.role=="admin" ){ %>
         <td>
@@ -309,25 +312,6 @@
         const content = doc1.innerText;
         navigator.clipboard.writeText(content);
       });
-    });
-  });
-  //get Elements
-  var cartbtn = document.querySelectorAll(".cartbtn");
-  var nameClass = document.querySelectorAll(".nameClass");
-  var priceClass = document.querySelectorAll(".priceClass");
-  //Open Add to Cart
-  cartbtn.forEach((c) => {
-    c.addEventListener("mouseover", function () {
-      var cartbtn1 = document.getElementById(this.id);
-      var priceClass1 = document.getElementById("p" + this.id);
-      var nameClass1 = document.getElementById("n" + this.id);
-      cartbtn1.onclick = function () {
-        let price = priceClass1.innerText;
-        let name = nameClass1.innerText;
-        window.location.href = `/cart?name=${encodeURIComponent(
-          name
-        )}&price=${encodeURIComponent(price)}`;
-      };
     });
   });
 </script>

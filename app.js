@@ -563,7 +563,7 @@ app.get("/letterHeadDownload", async (req, res) => {
 //
 //
 //
-//letter head downloader
+//business Card downloader
 app.get("/businessCardDownload", async (req, res) => {
   const mobile = req.session.user.mobile;
   const mobile1 = "+91 " + mobile.toString();
@@ -660,7 +660,7 @@ app.get("/businessCardDownload", async (req, res) => {
 //
 //
 //
-//letter head downloader
+//id Card downloader
 app.get("/idCardDownload", async (req, res) => {
   try {
     const mobile = req.session.user.mobile;
@@ -669,44 +669,20 @@ app.get("/idCardDownload", async (req, res) => {
     const date0 = req.session.user.date.toString();
     const expire1 = expire0.slice(0, 10);
     const date1 = date0.slice(0, 10);
-    // Load the JPEG image
-    const src = "/public/images/" + req.session.user.image;
-    const imagePath = path.join(__dirname, src);
-    const image = await loadImage(imagePath);
+    const src = req.session.user.image;
 
-    // Create a canvas with the same dimensions as the image
-    const canvas = createCanvas(image.width, image.height);
+    // Load the JPEG image
+    const image = await loadImage(src);
+
+    // Define fixed canvas dimensions for the compressed image
+    const fixedSize = 200; // Fixed width and height
+    const canvas = createCanvas(fixedSize, fixedSize);
     const ctx = canvas.getContext("2d");
 
-    // Draw a circular clipping region
-    ctx.beginPath();
-    ctx.arc(
-      image.width / 2,
-      image.height / 2,
-      Math.min(image.width, image.height) / 2 - 5,
-      0,
-      Math.PI * 2
-    ); // Adjust radius for the border
-    ctx.clip();
+    // Compress the image to fit into the fixed canvas dimensions
+    ctx.drawImage(image, 0, 0, fixedSize, fixedSize);
 
-    // Draw the image inside the circular clipping region
-    ctx.drawImage(image, 0, 0, image.width, image.height);
-    // Set the border properties (color and width)
-    ctx.lineWidth = 15; // Set the border thickness
-    ctx.strokeStyle = "blue"; // Set the border color to blue
-
-    // Draw the circular border
-    ctx.beginPath();
-    ctx.arc(
-      image.width / 2,
-      image.height / 2,
-      Math.min(image.width, image.height) / 2 - 5,
-      0,
-      Math.PI * 2
-    ); // -5 to account for the border width
-    ctx.stroke();
-
-    // Convert the canvas to a Buffer (which is like a PNG or JPEG file)
+    // Convert the canvas to a Buffer
     const circularImageBuffer = canvas.toBuffer();
 
     // Load the existing PDF
@@ -723,17 +699,20 @@ app.get("/idCardDownload", async (req, res) => {
       const firstPage = pages[0];
       const secondPage = pages[1];
       const { height } = firstPage.getSize();
-      const { height1 } = secondPage.getSize();
 
       // Embed the circular image into the PDF
-      const circularImage = await pdfDoc.embedPng(circularImageBuffer); // Using PNG buffer from canvas
+      const circularImage = await pdfDoc.embedPng(circularImageBuffer);
+
+      // Fixed size for the image in the PDF
+      const imageWidth = 60; // Fixed width
+      const imageHeight = 70; // Fixed height
 
       // Draw the circular image onto the page
       firstPage.drawImage(circularImage, {
-        x: 38,
-        y: height - 112,
-        width: 70,
-        height: 90,
+        x: 40,
+        y: height - 115,
+        width: imageWidth,
+        height: imageHeight,
       });
       firstPage.drawText(mobile1, {
         x: 46,
@@ -766,9 +745,11 @@ app.get("/idCardDownload", async (req, res) => {
     } else {
       throw new Error("PDF has less than 2 pages");
     }
+
+    // Save the modified PDF
     const pdfBytes = await pdfDoc.save();
 
-    // Set headers and send PDF for download
+    // Set headers and send the PDF for download
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader(
       "Content-Disposition",
@@ -777,7 +758,7 @@ app.get("/idCardDownload", async (req, res) => {
     res.send(Buffer.from(pdfBytes));
   } catch (error) {
     console.log(error);
-    res.status(500).send("Error replacing text in PDF");
+    res.status(500).send("Error creating the ID Card PDF");
   }
 });
 //
