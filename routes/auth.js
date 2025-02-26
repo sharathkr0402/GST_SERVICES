@@ -516,10 +516,10 @@ router.post("/otp", async (req, res) => {
     user.otpExpires = undefined;
     await user.save();
 
-    req.session.user = user;
-    delete req.session.tempUser;
+    // req.session.user = user;
+    // delete req.session.tempUser;
 
-    res.redirect("/about");
+    // res.redirect("/about");
   } catch (err) {
     console.log(err);
     res.redirect("/login");
